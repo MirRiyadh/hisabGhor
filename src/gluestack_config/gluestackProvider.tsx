@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-import 'react-native-gesture-handler';
-import 'react-native-reanimated';
 import React, {useState, useContext} from 'react';
 import {Pressable, SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
@@ -17,9 +9,9 @@ import {
   Button,
   Switch,
 } from '@gluestack-ui/themed';
-import {ContextProvider, IStore} from './src/context/ContextApi';
+import {ContextProvider, IStore} from '../context/ContextApi';
 
-function App(): JSX.Element {
+function GlueStackProvider({children}: any): JSX.Element {
   const {isDark, setIsDark}: IStore = useContext(ContextProvider);
   const isDarkMode = useColorScheme() === isDark;
 
@@ -34,25 +26,9 @@ function App(): JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <GluestackUIProvider config={config}>
-        <Box
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}
-          height="100%">
-          <Switch
-            size="md"
-            isChecked={true}
-            onChange={e =>
-              e.nativeEvent.value ? setIsDark('light') : setIsDark('dark')
-            }
-          />
-
-          <Text> Ok </Text>
-        </Box>
-      </GluestackUIProvider>
+      <GluestackUIProvider config={config}>{children}</GluestackUIProvider>
     </SafeAreaView>
   );
 }
 
-export default App;
+export default GlueStackProvider;
