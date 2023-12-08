@@ -7,7 +7,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 export default function Home() {
   const menuIcon = require('../../assets/whitedots.png');
-  const {isDark, setIsDark}: IStore = useContext(ContextProvider);
+  const {isDark} : IStore = useContext(ContextProvider);
+  
   return (
     <GlueStackProvider>
       <Box height={'100%'}>

@@ -8,13 +8,16 @@ export const ContextProvider = createContext({});
 export interface IStore {
   isDark: string;
   setIsDark: any;
+  riad: string;
 }
 
 const ContextApi = () => {
   const [isDark, setIsDark] = useState('dark');
+
   const store: IStore = {
     isDark,
     setIsDark,
+    riad,
   };
   return (
     <ContextProvider.Provider value={store}>
