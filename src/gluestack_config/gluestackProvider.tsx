@@ -16,7 +16,7 @@ function GlueStackProvider({children}: any): JSX.Element {
   const isDarkMode = useColorScheme() === isDark;
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: isDarkMode ? Colors.darker : Colors.white,
     // height: '100%',
   };
 
