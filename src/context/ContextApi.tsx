@@ -16,8 +16,7 @@ const ContextApi = () => {
 
   const store: IStore = {
     isDark,
-    setIsDark,
-    riad,
+    setIsDark
   };
   return (
     <ContextProvider.Provider value={store}>
