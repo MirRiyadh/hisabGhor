@@ -8,7 +8,6 @@ export const ContextProvider = createContext({});
 export interface IStore {
   isDark: string;
   setIsDark: any;
-  riad: string;
 }
 
 const ContextApi = () => {
