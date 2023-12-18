@@ -812,9 +812,9 @@ export default function Home({navigation}: any) {
             </HStack>
           </VStack>
         </ScrollView>
-        ============================================= Start Here and your part
+        {/* ============================================= Start Here and your part
         is down part money increment and decrement
-        ================================================
+        ================================================ */}
       </Box>
     </GlueStackProvider>
   );
