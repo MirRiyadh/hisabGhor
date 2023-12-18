@@ -57,6 +57,8 @@ const dueIcon = require('../../assets/icons/alms.png');
 const savingIcon = require('../../assets/icons/save-money-2.png');
 const debtIcon = require('../../assets/icons/money-bag.png');
 const budgetIcon = require('../../assets/icons/budget.png');
+const spentIcon = require('../../assets/icons/save-money-2.png');
+const incomeIcon = require('../../assets/icons/save-money1.png');
 
 export default function Home({navigation}: any) {
   // const navigation = useNavigation();
@@ -812,9 +814,81 @@ export default function Home({navigation}: any) {
             </HStack>
           </VStack>
         </ScrollView>
-        {/* ============================================= Start Here and your part
-        is down part money increment and decrement
+        {/* ============================================= 
+        Start Here and your part
+        is down part money increment and decrement 
         ================================================ */}
+        <Box
+          borderTopLeftRadius="$3xl"
+          borderTopRightRadius="$3xl"
+          // bg="$coolGray900"
+        >
+          <Box mx={'5%'}>
+            <Box mx="4%">
+              <Divider bgColor="$coolGray300" mt="$5" mb="$1" />
+            </Box>
+            <HStack pt="$2" justifyContent="space-between">
+              <HStack gap="$3" justifyContent="center">
+                <View
+                  w="$12"
+                  h="$12"
+                  rounded="$md"
+                  bg="$red500"
+                  alignItems="center"
+                  justifyContent="center">
+                  <Image source={spentIcon} w="$8" h="$8" alt="lolmama" />
+                </View>
+                <VStack gap={1}>
+                  <Text color="$red500">- $500</Text>
+                  <Text>Total Spent</Text>
+                </VStack>
+              </HStack>
+              <HStack gap="$3" justifyContent="center">
+                <View
+                  w="$12"
+                  h="$12"
+                  rounded="$md"
+                  bg="$green500"
+                  alignItems="center"
+                  justifyContent="center">
+                  <Image source={spentIcon} w="$8" h="$8" alt="lolmama" />
+                </View>
+                <VStack gap={1}>
+                  <Text color="$green500">- $500</Text>
+                  <Text>Total Spent</Text>
+                </VStack>
+              </HStack>
+            </HStack>
+            <HStack justifyContent="space-between" my="$3">
+              <TouchableOpacity
+                style={{
+                  width: '48%',
+                }}>
+                <View
+                  py="$3"
+                  rounded="$md"
+                  style={{backgroundColor: globalStyle.primary}}>
+                  <Text color="$coolGray100" fontSize="$lg" textAlign="center">
+                    + Add Money
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  width: '48%',
+                }}>
+                <View
+                  py="$3"
+                  rounded="$md"
+                  style={{backgroundColor: globalStyle.primary}}>
+                  <Text color="$coolGray100" fontSize="$lg" textAlign="center">
+                    - Spent Money
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </HStack>
+          </Box>
+        </Box>
       </Box>
     </GlueStackProvider>
   );
