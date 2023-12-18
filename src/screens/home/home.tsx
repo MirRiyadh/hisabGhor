@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import GlueStackProvider from '../gluestack_config/gluestackProvider';
+import GlueStackProvider from '../../gluestack_config/gluestackProvider';
 import {
   Box,
   HStack,
@@ -38,8 +38,8 @@ const AnimatedBox = styled(AnimatedView, {
     opacity: 0,
   },
 });
-import {ContextProvider, IStore} from '../context/ContextApi';
-import {globalStyle} from '../styles/GlobalStyle';
+import {ContextProvider, IStore} from '../../context/ContextApi';
+import {globalStyle} from '../../styles/GlobalStyle';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -51,14 +51,14 @@ import {TouchableOpacity} from 'react-native';
 import {Divider} from '@gluestack-ui/themed';
 
 // Icons
-const menuIcon = require('../../assets/icons/white-dots.png');
-const lolo = require('../../assets/icons/cash-withdrawal.png');
-const dueIcon = require('../../assets/icons/alms.png');
-const savingIcon = require('../../assets/icons/save-money-2.png');
-const debtIcon = require('../../assets/icons/money-bag.png');
-const budgetIcon = require('../../assets/icons/budget.png');
-const spentIcon = require('../../assets/icons/save-money-2.png');
-const incomeIcon = require('../../assets/icons/save-money1.png');
+const menuIcon = require('../../../assets/icons/white-dots.png');
+const lolo = require('../../../assets/icons/cash-withdrawal.png');
+const dueIcon = require('../../../assets/icons/alms.png');
+const savingIcon = require('../../../assets/icons/save-money-2.png');
+const debtIcon = require('../../../assets/icons/money-bag.png');
+const budgetIcon = require('../../../assets/icons/budget.png');
+const spentIcon = require('../../../assets/icons/save-money-2.png');
+const incomeIcon = require('../../../assets/icons/save-money1.png');
 
 export default function Home({navigation}: any) {
   // const navigation = useNavigation();
@@ -851,11 +851,11 @@ export default function Home({navigation}: any) {
                   bg="$green500"
                   alignItems="center"
                   justifyContent="center">
-                  <Image source={spentIcon} w="$8" h="$8" alt="lolmama" />
+                  <Image source={incomeIcon} w="$8" h="$8" alt="lolmama" />
                 </View>
                 <VStack gap={1}>
-                  <Text color="$green500">- $500</Text>
-                  <Text>Total Spent</Text>
+                  <Text color="$green500">$500</Text>
+                  <Text>Total Income</Text>
                 </VStack>
               </HStack>
             </HStack>
