@@ -69,20 +69,23 @@ export default function Home({navigation}: any) {
     <GlueStackProvider>
       <Box height={'100%'}>
         <Box
-          height={'39%'}
+          height={285}
           // bg={'$blue900'}
-          // hardShadow="1"
           softShadow="1"
+          px='$6'
+          
           style={{
             backgroundColor: globalStyle.primary,
           }}
-          py={'$3'}
-          borderBottomLeftRadius={15}
-          borderBottomRightRadius={15}>
+          py={'$4'}
+          borderBottomStartRadius={20}
+          borderBottomEndRadius={20}
+         
+          >
           {/*-----------------------------------------------
                      Header buttons and options part  
            -----------------------------------------------*/}
-          <HStack justifyContent="space-between" px={'$3'} alignItems="center">
+          <HStack justifyContent="space-between" alignItems="center">
             {/*--------------- left-------------  */}
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
               <Image w={20} h={20} source={menuIcon} alt="lol" />
@@ -133,7 +136,7 @@ export default function Home({navigation}: any) {
           {/*----------------------------------------------
                     Name, Balance and Info Top Section
             --------------- ------------------------------*/}
-          <VStack gap={5} mx="$6">
+          <VStack gap={5}>
             {/*------------ naming part ---------- */}
             <Box mt={10}>
               <Text fontSize={14} color="$white">
