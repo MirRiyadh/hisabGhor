@@ -73,9 +73,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.reactnativeapp"
+    namespace "com.moneybag"
     defaultConfig {
-        applicationId "com.reactnativeapp"
+        applicationId "com.moneybag"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
