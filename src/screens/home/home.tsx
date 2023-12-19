@@ -193,7 +193,7 @@ export default function Home({navigation}: any) {
         ----------------------------------------------- */}
         <ScrollView pt="$5">
           <HStack mx={'4%'} justifyContent="space-between">
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Due')}>
               <Box
                 style={{
                   backgroundColor: globalStyle.primary,
