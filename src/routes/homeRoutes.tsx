@@ -22,7 +22,7 @@ function HomeRoutes() {
         // statusBarColor: GlobalStyles.Black,
       }}>
       <Stack.Screen
-        name="Home"
+        name="Homepage"
         component={Home}
         options={{
           headerShown: false,
