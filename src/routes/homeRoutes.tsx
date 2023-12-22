@@ -3,6 +3,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import DueEstimationScreen from '../screens/due/dueEstimationScreen';
 import Home from '../screens/home/home';
+import SavingsScreen from '../screens/savings/savingsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,14 @@ function HomeRoutes() {
       <Stack.Screen
         name="Due"
         component={DueEstimationScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      
+      <Stack.Screen
+        name="Savings"
+        component={SavingsScreen}
         options={{
           headerShown: false,
         }}
