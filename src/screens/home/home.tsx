@@ -72,16 +72,13 @@ export default function Home({navigation}: any) {
           height={285}
           // bg={'$blue900'}
           softShadow="1"
-          px='$6'
-          
+          px="$6"
           style={{
             backgroundColor: globalStyle.primary,
           }}
           py={'$4'}
           borderBottomStartRadius={20}
-          borderBottomEndRadius={20}
-         
-          >
+          borderBottomEndRadius={20}>
           {/*-----------------------------------------------
                      Header buttons and options part  
            -----------------------------------------------*/}
@@ -821,6 +818,10 @@ export default function Home({navigation}: any) {
         Start Here and your part
         is down part money increment and decrement 
         ================================================ */}
+        {/*==============================================
+                  Now start of  Bottom part  
+         ================================================
+         */}
         <Box
           borderTopLeftRadius="$3xl"
           borderTopRightRadius="$3xl"

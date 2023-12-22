@@ -22,8 +22,8 @@ import {VStack} from '@gluestack-ui/themed';
 const logoIcon = require('../../../assets/icons/save-money.png');
 
 function CustomDrawerContent({navigation, ...props}: any) {
-  const {isDark, setIsDark}: IStore = useContext(ContextProvider);
-  const isDarkMode = useColorScheme() === isDark;
+  const XStore: IStore = useContext(ContextProvider);
+  const isDarkMode = useColorScheme() === XStore.isDark;
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
