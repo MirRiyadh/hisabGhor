@@ -15,7 +15,7 @@ function MyDrawer() {
         {/* screens */}
 
         <Drawer.Screen
-          name="HomeRoute"
+          name="Home"
           component={HomeRoutes}
           options={{
             headerShown: false,

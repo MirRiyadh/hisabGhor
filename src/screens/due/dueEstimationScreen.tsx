@@ -1,61 +1,54 @@
-import {View, Text} from 'react-native';
-import React from 'react';
-import { Box, Image } from '@gluestack-ui/themed';
+import {} from 'react-native';
+import React, {useState} from 'react';
 import GlueStackProvider from '../../gluestack_config/gluestackProvider';
-const savingIcon = require('../../../assets/icons/budget.png');
+import CommonHeaderPlusBack from '../../custom/commonHeader/CommonHeaderPlusBack';
+import CommonWriteBox from '../../custom/commonWriteBox/CommonWriteBox';
+
+import {Box, CheckIcon} from '@gluestack-ui/themed';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import CustomModal from '../../custom/customModal/CustomModal';
+import {Text} from '@gluestack-ui/themed';
 
 const DueEstimationScreen = () => {
-  const datas =[{
-    id: "1",
-    img: "",
-    title: "",
-    number: "",
-    date: "",
-    amount: "",
-  },
-    {id: "2",
-    img: "",
-    title: "",
-    number: "",
-    date: "",
-    amount: "",
-  }]
+  const [searchText, setSerachText] = useState();
+  const [modal, setModal] = useState(false);
   return (
     <GlueStackProvider>
-      <Box height={'100%'} px={20} my={30}>
-        {datas.map(data=>{
-          return <Box borderWidth={1} borderColor='$#DDDDDD' py={7} px={20} borderRadius={5} mb={14}>
-        <Box flexDirection='row' justifyContent='flex-end'>
-          <Text>...</Text>
+      <Box h={'100%'}>
+        <CommonHeaderPlusBack
+          isBack={true}
+          title={'Due Estimation'}
+          isSearch={true}
+          setSearchText={setSerachText}
+          searchText={searchText}
+        />
+        <CommonWriteBox
+          icon={<FontAwesome name="pencil-square-o" color="white" size={35} />}
+          title="Total Deu"
+          amount="500"
+          btTitle="Add People"
+          modal={modal}
+          setModal={setModal}
+        />
+        <Box>
+          <Text>
+            alsdjfopsajdofjsakdjfkjsdafjsladjfjsdafjdsjf
+            aslkdjfljsadkfjklsajdkfjsakdf asdlfjlksadjfkjsadf asdlkfjsldajf
+          </Text>
         </Box>
-        <Box flexDirection='row' justifyContent='space-between' alignItems='center'>
-          {/* ------------image content box----------------- */}
-          <Box flexDirection='row' gap={10}>
-            <Box backgroundColor='$#4849BF' w={45} h={45} borderRadius={50} justifyContent="center"
-                alignItems="center"> 
-              <Image w={25} h={25} m={'auto'}  source={savingIcon} alt="lol" />
-            </Box>
-            <Box >
-              <Text fontSize={8}>Mobile-Bkash</Text>
-              <Text>01734431369</Text>
-              <Text>23 Mar, 23- 12.00 PM</Text>
-            </Box>
-         
-          </Box>
-
-          {/* ------------price content box----------------- */}
+        <CustomModal
+          modalVisible={modal}
+          setModalVisible={setModal}
+          Radius={20}
+          height="80%"
+          width="90%"
+          appearance={true}
+          backButton={true}
+          backButtonTitle="Modal Open hoise">
           <Box>
-            <Text>10000$</Text>
+            <Text>Arif</Text>
           </Box>
-          {/* ------------arrow content box----------------- */}
-          <Box>
-            <Text> → </Text>
-          </Box>
-        </Box>
-        </Box>})}
-        
-        
-        
+        </CustomModal>
       </Box>
     </GlueStackProvider>
   );
