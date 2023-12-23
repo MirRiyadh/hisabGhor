@@ -36,7 +36,7 @@ const SavingsScreen = () => {
               <Image w={25} h={25} m={'auto'}  source={savingIcon} alt="lol" />
             </Box>
             <Box >
-              <Text fontSize={8}>Mobile-Bkash</Text>
+              <Text>Mobile-Bkash</Text>
               <Text>01734431369</Text>
               <Text>23 Mar, 23- 12.00 PM</Text>
             </Box>
