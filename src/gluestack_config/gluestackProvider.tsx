@@ -13,7 +13,7 @@ import {ContextProvider, IStore} from '../context/ContextApi';
 import {globalStyle} from '../styles/GlobalStyle';
 
 function GlueStackProvider({children}: any): JSX.Element {
-  const XStore: IStore = useContext(ContextProvider);
+  const XStore: any = useContext(ContextProvider);
   const isDarkMode = useColorScheme() === XStore.isDark;
 
   const backgroundStyle = {

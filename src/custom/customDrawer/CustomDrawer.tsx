@@ -27,51 +27,50 @@ function CustomDrawerContent({navigation, ...props}: any) {
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    // height: '100%',
   };
   return (
-    <DrawerContentScrollView {...props} style={[backgroundStyle]}>
-      <GluestackUIProvider config={config}>
-        <HStack
-          h={200}
-          style={{
-            backgroundColor: globalStyle.primary,
-            // borderTopRightRadius: 20,
-          }}
-          justifyContent="center"
-          alignItems="center"
-          gap="$3">
-          <Image w="$24" h="$24" source={logoIcon} alt="lolmama" />
+    <GluestackUIProvider config={config}>
+      <HStack
+        h={200}
+        style={{
+          backgroundColor: globalStyle.primary,
+          // borderTopRightRadius: 20,
+        }}
+        justifyContent="center"
+        alignItems="center"
+        gap="$3">
+        <Image w="$24" h="$24" source={logoIcon} alt="lolmama" />
 
-          <View py="$5" h={130}>
-            <Text
-              style={{
-                fontSize: 40,
-              }}
-              py="$4"
-              color="$white"
-              fontWeight="$black">
-              Super
-            </Text>
-            <Text
-              style={{
-                fontSize: 40,
-              }}
-              py="$4"
-              color="$white"
-              fontWeight="$black">
-              Save
-            </Text>
-          </View>
-        </HStack>
+        <View py="$5" h={130}>
+          <Text
+            style={{
+              fontSize: 40,
+            }}
+            py="$4"
+            color="$white"
+            fontWeight="$black">
+            Super
+          </Text>
+          <Text
+            style={{
+              fontSize: 40,
+            }}
+            py="$4"
+            color="$white"
+            fontWeight="$black">
+            Save
+          </Text>
+        </View>
+      </HStack>
+      <DrawerContentScrollView {...props} style={[backgroundStyle]}>
         {/* <DrawerItem label="Help"  onPress={() => console.log('lol')} /> */}
         {/* <DrawerItem
           label="Help"
           onPress={() => Linking.openURL('https://mywebsite.com/help')}
         /> */}
-      </GluestackUIProvider>
-      <DrawerItemList {...props} />
-    </DrawerContentScrollView>
+        <DrawerItemList {...props} />
+      </DrawerContentScrollView>
+    </GluestackUIProvider>
   );
 }
 

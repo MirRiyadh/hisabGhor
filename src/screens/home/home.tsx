@@ -216,7 +216,7 @@ export default function Home({navigation}: any) {
                 Due
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Savings')}>
               <Box
                 style={{
                   backgroundColor: globalStyle.primary,
