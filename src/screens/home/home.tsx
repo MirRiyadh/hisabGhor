@@ -63,7 +63,7 @@ const incomeIcon = require('../../../assets/icons/save-money1.png');
 export default function Home({navigation}: any) {
   // const navigation = useNavigation();
 
-  const XStore: IStore = useContext(ContextProvider);
+  const XStore: any = useContext(ContextProvider);
 
   return (
     <GlueStackProvider>
