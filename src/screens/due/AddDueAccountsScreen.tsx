@@ -29,7 +29,7 @@ import {Text} from '@gluestack-ui/themed';
 import CommonDateFilter from '../../custom/dateFilter/commonDateFilter';
 import {globalStyle} from '../../styles/GlobalStyle';
 
-const DueEstimationScreen = () => {
+const AddDueAccountsScreen = () => {
   const [searchText, setSerachText] = useState();
   const [modal, setModal] = useState(false);
   return (
@@ -106,7 +106,8 @@ const DueEstimationScreen = () => {
                 <Box p="$1" position="absolute" right={0} top={2}>
                   <Menu
                     placement="bottom"
-                    right="$3"
+                    right="$4"
+                    top="-$4"
                     width="$16"
                     gap="-$1"
                     trigger={({...triggerProps}) => {
@@ -120,27 +121,31 @@ const DueEstimationScreen = () => {
                         </TouchableOpacity>
                       );
                     }}>
-                    <MenuItem key="Community" textValue="Community">
-                      <Icon as={GlobeIcon} size="sm" mr="$2" />
-                      <MenuItemLabel size="sm">Community</MenuItemLabel>
+                    <MenuItem key="Call Now" textValue="Call Now">
+                      {/* <Icon as={GlobeIcon} size="sm" mr="$2" /> */}
+                      <MenuItemLabel size="md">Call Now</MenuItemLabel>
                     </MenuItem>
-                    <MenuItem key="Plugins" textValue="Plugins">
+                    <MenuItem key="Send SMS" textValue="Send SMS">
                       {/* PuzzleIcon is imported from 'lucide-react-native' */}
                       {/* <Icon as={PuzzleIcon} size="sm" mr="$2" /> */}
-                      <MenuItemLabel size="sm">Plugins</MenuItemLabel>
+                      <MenuItemLabel size="md">Send SMS</MenuItemLabel>
                     </MenuItem>
-                    <MenuItem key="Theme" textValue="Theme">
-                      {/* PaintBucket is imported from 'lucide-react-native' */}
-                      {/* <Icon as={PaintBucket} size="sm" mr="$2" /> */}
-                      <MenuItemLabel size="sm">Theme</MenuItemLabel>
+
+                    <MenuItem key="Edit" textValue="Edit">
+                      {/* <Icon as={SettingsIcon} size="sm" mr="$2" /> */}
+                      <MenuItemLabel size="md">Edit</MenuItemLabel>
                     </MenuItem>
-                    <MenuItem key="Settings" textValue="Settings">
-                      <Icon as={SettingsIcon} size="sm" mr="$2" />
-                      <MenuItemLabel size="sm">Settings</MenuItemLabel>
+                    <MenuItem key="Delete" textValue="Delete">
+                      {/* <Icon as={AddIcon} size="sm" mr="$2" /> */}
+                      <MenuItemLabel size="md">Delete</MenuItemLabel>
                     </MenuItem>
-                    <MenuItem key="Add account" textValue="Add account">
-                      <Icon as={AddIcon} size="sm" mr="$2" />
-                      <MenuItemLabel size="sm">Add account</MenuItemLabel>
+                    <MenuItem key="Details" textValue="Details">
+                      {/* <Icon as={AddIcon} size="sm" mr="$2" /> */}
+                      <MenuItemLabel size="md">Details</MenuItemLabel>
+                    </MenuItem>
+                    <MenuItem key="Set A Reminder" textValue="Set A Reminder">
+                      {/* <Icon as={AddIcon} size="sm" mr="$2" /> */}
+                      <MenuItemLabel size="md">Set A Reminder</MenuItemLabel>
                     </MenuItem>
                   </Menu>
                 </Box>
@@ -149,7 +154,7 @@ const DueEstimationScreen = () => {
           </VStack>
         </ScrollView>
         <CommonWriteBox
-          icon={<FontAwesome name="pencil-square-o" color="white" size={35} />}
+          icon={<FontAwesome name="fax" color="white" size={30} />}
           title="Total Deu"
           amount="500"
           btTitle="Add People"
@@ -176,4 +181,4 @@ const DueEstimationScreen = () => {
   );
 };
 
-export default DueEstimationScreen;
+export default AddDueAccountsScreen;

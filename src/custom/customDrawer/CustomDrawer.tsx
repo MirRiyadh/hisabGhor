@@ -22,7 +22,7 @@ import {VStack} from '@gluestack-ui/themed';
 const logoIcon = require('../../../assets/icons/save-money.png');
 
 function CustomDrawerContent({navigation, ...props}: any) {
-  const XStore: IStore = useContext(ContextProvider);
+  const XStore: any = useContext(ContextProvider);
   const isDarkMode = useColorScheme() === XStore.isDark;
 
   const backgroundStyle = {
@@ -34,7 +34,7 @@ function CustomDrawerContent({navigation, ...props}: any) {
         h={200}
         style={{
           backgroundColor: globalStyle.primary,
-          // borderTopRightRadius: 20,
+          // borderTopEndRadius: 20,
         }}
         justifyContent="center"
         alignItems="center"
