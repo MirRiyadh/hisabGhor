@@ -5,6 +5,7 @@ import AddDueAccountsScreen from '../screens/due/AddDueAccountsScreen';
 import Home from '../screens/home/home';
 import SavingsScreen from '../screens/savings/savingsScreen';
 import DueAccountsDetailsScreen from '../screens/due/DueAccountsDetailsScreen';
+import SavingsHistoryScreen from '../screens/savings/savingsHistoryScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +49,14 @@ function HomeRoutes() {
       <Stack.Screen
         name="Savings"
         component={SavingsScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="Savings-History"
+        component={SavingsHistoryScreen}
         options={{
           headerShown: false,
         }}
