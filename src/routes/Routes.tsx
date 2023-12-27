@@ -11,6 +11,17 @@ function MyDrawer() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
+        screenOptions={{
+          drawerActiveBackgroundColor: 'orange',
+          drawerActiveTintColor: '#fff',
+          drawerInactiveTintColor: '#000',
+          headerShown: false,
+
+          drawerStyle: {
+            backgroundColor: '#00FF0000',
+          },
+          drawerInactiveBackgroundColor: 'transparent',
+        }}
         drawerContent={props => <CustomDrawerContent {...props} />}>
         {/* screens */}
 
