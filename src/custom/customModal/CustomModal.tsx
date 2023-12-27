@@ -21,7 +21,7 @@ type CustomModalProps = {
   Radius?: number;
   width?: string;
   center?: string;
-  backButtonTitle?: string;
+
   appearance?: boolean;
   backButton?: boolean;
 };
@@ -39,7 +39,6 @@ const CustomModal = ({
   center,
   appearance: normal,
   backButton,
-  backButtonTitle,
 }: CustomModalProps) => {
   return (
     <Modal
@@ -67,35 +66,23 @@ const CustomModal = ({
             width: width ? width : '90%',
             padding: 10,
             justifyContent: center && 'center',
-            // position: 'relative',
+            position: 'relative',
           }}>
           {backButton && (
             <TouchableOpacity
               onPress={() => setModalVisible(!modalVisible)}
               style={{
-                paddingHorizontal: '2%',
-                paddingVertical: '2%',
-
-                // position: 'absolute',
-                // right: 5,
-                // top: 6,
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
+                position: 'absolute',
+                right: 8,
+                top: 8,
+                zIndex: 999,
               }}>
-              <Text
-                style={{
-                  color: 'gray',
-                  fontWeight: 'bold',
-                  fontSize: 20,
-                }}>
-                {backButtonTitle}
-              </Text>
               <View
                 style={{
                   width: 30,
                   height: 30,
-                  backgroundColor: globalStyle.primary,
+                  // backgroundColor: globalStyle.primary,
+                  backgroundColor: 'gray',
                   justifyContent: 'center',
                   alignItems: 'center',
                   borderRadius: 100,

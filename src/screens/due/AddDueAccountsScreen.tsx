@@ -21,6 +21,11 @@ import {
   GlobeIcon,
   SettingsIcon,
   AddIcon,
+  Input,
+  InputField,
+  ButtonIcon,
+  CloseCircleIcon,
+  CloseIcon,
 } from '@gluestack-ui/themed';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
@@ -29,9 +34,10 @@ import {Text} from '@gluestack-ui/themed';
 import CommonDateFilter from '../../custom/dateFilter/commonDateFilter';
 import {globalStyle} from '../../styles/GlobalStyle';
 
-const AddDueAccountsScreen = () => {
-  const [searchText, setSerachText] = useState();
+const AddDueAccountsScreen = ({navigation}: any) => {
+  const [searchText, setSearchText] = useState();
   const [modal, setModal] = useState(false);
+
   return (
     <GlueStackProvider>
       <Box h={'100%'}>
@@ -39,13 +45,13 @@ const AddDueAccountsScreen = () => {
           isBack={true}
           title={'Due Estimation'}
           isSearch={true}
-          setSearchText={setSerachText}
+          setSearchText={setSearchText}
           searchText={searchText}
         />
         <CommonDateFilter />
         <ScrollView>
           <VStack>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('DueDetails')}>
               <HStack
                 justifyContent="space-between"
                 alignItems="center"
@@ -166,14 +172,54 @@ const AddDueAccountsScreen = () => {
           modalVisible={modal}
           setModalVisible={setModal}
           Radius={20}
-          height="80%"
+          height="65%"
           width="90%"
           appearance={true}
-          backButton={true}
+          // backButton={true}
           // backButtonTitle="Modal Open hoise"
         >
           <Box>
-            <Text>Arif</Text>
+            <Box my="$2" justifyContent="center" alignItems="center">
+              <FontAwesome name="user" size={45} color="gray" />
+            </Box>
+
+            <VStack px="$1" gap="$4" mt="$3">
+              <Input rounded="$lg">
+                <InputField placeholder="Full Name" />
+              </Input>
+              <Input rounded="$lg">
+                <InputField placeholder="Phone Number" />
+              </Input>
+              <Input rounded="$lg">
+                <InputField placeholder="Address" />
+              </Input>
+              <Input rounded="$lg">
+                <InputField placeholder="Amount" />
+              </Input>
+              <Input rounded="$lg">
+                <InputField placeholder="Reason" />
+              </Input>
+              <Input rounded="$lg" w="$20">
+                <InputField placeholder="Date" />
+              </Input>
+              <HStack
+                gap="$3"
+                justifyContent="space-around"
+                alignItems="center"
+                mt="$3">
+                <Button action="positive" w="40%">
+                  <ButtonIcon as={AddIcon} size="xl" />
+                  <ButtonText px="$2">Add</ButtonText>
+                </Button>
+                <Button
+                  w="40%"
+                  action="negative"
+                  onPress={() => setModal(false)}>
+                  <ButtonIcon as={CloseIcon} size="xl" />
+                  <ButtonText px="$2">Cancel</ButtonText>
+                </Button>
+              </HStack>
+            </VStack>
           </Box>
         </CustomModal>
       </Box>
