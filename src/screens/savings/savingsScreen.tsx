@@ -35,11 +35,12 @@ const SavingsScreen = ({navigation}: any) => {
         searchText={searchText}
         setSearchText={setSearchText}
       />
-      <Box height={'100%'} px={20} my={30}>
       <CommonDateFilter />
+      <Box height={'100%'} px={20} my={10}>
+      
         {datas.map((data, i) => {
           return (
-         <TouchableOpacity onPress={() => navigation.navigate('Savings-History')}>
+         <TouchableOpacity key={data.id} onPress={() => navigation.navigate('Savings-History')}>
            <Box
               key={i}
               borderWidth={1}
