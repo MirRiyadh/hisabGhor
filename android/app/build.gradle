@@ -118,7 +118,10 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+    // for icons 
     implementation project(':react-native-vector-icons')
+    // for sqlite
+     implementation project(':react-native-sqlite-storage')
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

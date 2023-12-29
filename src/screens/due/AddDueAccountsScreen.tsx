@@ -33,6 +33,7 @@ import CustomModal from '../../custom/customModal/CustomModal';
 import {Text} from '@gluestack-ui/themed';
 import CommonDateFilter from '../../custom/dateFilter/commonDateFilter';
 import {globalStyle} from '../../styles/GlobalStyle';
+import {RegisteredUser} from '../../../database/controllers/user.controllers';
 
 const AddDueAccountsScreen = ({navigation}: any) => {
   const [searchText, setSearchText] = useState();
@@ -207,7 +208,16 @@ const AddDueAccountsScreen = ({navigation}: any) => {
                 justifyContent="space-around"
                 alignItems="center"
                 mt="$3">
-                <Button action="positive" w="40%">
+                <Button
+                  action="positive"
+                  w="40%"
+                  onPress={() =>
+                    RegisteredUser({
+                      email: 'arifbiswas@gamil.com',
+                      name: 'arifbiswas',
+                      password: 'lolmama',
+                    })
+                  }>
                   <ButtonIcon as={AddIcon} size="xl" />
                   <ButtonText px="$2">Add</ButtonText>
                 </Button>

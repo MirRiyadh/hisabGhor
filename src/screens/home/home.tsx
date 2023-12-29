@@ -49,6 +49,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native';
 import {Divider} from '@gluestack-ui/themed';
+import {DB} from '../../../database/db/db.config';
 
 // Icons
 const menuIcon = require('../../../assets/icons/white-dots.png');
@@ -62,7 +63,7 @@ const incomeIcon = require('../../../assets/icons/save-money1.png');
 
 export default function Home({navigation}: any) {
   // const navigation = useNavigation();
-
+  // DB.close();
   const XStore: any = useContext(ContextProvider);
 
   return (
