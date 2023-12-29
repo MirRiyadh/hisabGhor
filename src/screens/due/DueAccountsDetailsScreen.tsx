@@ -122,7 +122,7 @@ const DueAccountsDetailsScreen = () => {
                 <Box p="$1" position="relative" right={0} top={2}>
                   <Menu
                     placement="bottom"
-                    right="$4"
+                    // right="$4"
                     top="-$4"
                     width="$16"
                     gap="-$1"
