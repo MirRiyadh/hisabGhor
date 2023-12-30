@@ -1,16 +1,25 @@
-import { View, Text } from 'react-native'
+const cash = require('../../../assets/icons/cash-withdrawal.png');
+const history = require('../../../assets/icons/file.png');
+const money = require('../../../assets/icons/money-black.png');
+
+import { View } from 'react-native'
 import React, { useState } from 'react'
 import GlueStackProvider from '../../gluestack_config/gluestackProvider';
 import CommonHeaderPlusBack from '../../custom/commonHeader/CommonHeaderPlusBack';
 import CommonDateFilter from '../../custom/dateFilter/commonDateFilter';
-import { Box, MenuItemLabel, MenuItem, Image } from '@gluestack-ui/themed';
+import {Text, Box, MenuItemLabel, MenuItem, Image, Divider, ScrollView,
+  VStack, HStack, Input, InputField, ButtonIcon, Button, AddIcon, CloseIcon, ButtonText } from '@gluestack-ui/themed';
 import { Menu } from '@gluestack-ui/themed';
 import { TouchableOpacity } from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-const savingIcon = require('../../../assets/icons/budget.png');
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Feather from 'react-native-vector-icons/Feather';
+import CommonWriteBox from '../../custom/commonWriteBox/CommonWriteBox';
+import CustomModal from '../../custom/customModal/CustomModal';
 
 const SavingsHistoryScreen = () => {
   const [searchText, setSearchText] = useState('');
+  const [isPaid, setIsPaid] = useState(false);
+  const [modal, setModal] = useState(false);
   const datas = [
     {
       id: '1',
@@ -25,6 +34,7 @@ const SavingsHistoryScreen = () => {
 
   return (
     <GlueStackProvider>
+      <Box height={"100%"}>
       <CommonHeaderPlusBack
         isBack={true}
         title="Bkash Number"
@@ -33,114 +43,192 @@ const SavingsHistoryScreen = () => {
         setSearchText={setSearchText}
       />
       <CommonDateFilter />
-      <Box borderWidth={0.5}  borderColor='#dedede' mx={20} my={5}></Box>
-      <Box height={'100%'} px={20} my={10}>
+      <Box mx="$4" my="$2">
+          <Divider />
+        </Box>
+      <Box px={20} my={7}>
       {datas.map((data, i) => {
           return (
-         <TouchableOpacity>
-           <Box
-              key={i}
-              borderBottomWidth={1}
-              borderColor="$#DDDDDD"
-              borderStyle='$dashed'
-              py={7}
-              px={20}
-              borderRadius={5}
-              mb={14}
-              >
-              <Box flexDirection="row" justifyContent="flex-end">
-                {/* _____________3 dots icon___________________ */}
-                
-                <Menu
-                  placement="bottom" 
-                  trigger={({ ...triggerProps }) => {
-                  return (
-                  <TouchableOpacity {...triggerProps}>
-                          <AntDesign
-                            name="ellipsis1"
-                            size={20}
-                            color="black"
-                          />
-                  </TouchableOpacity>
-
-            );
-          }}
-        >
-          <MenuItem key="Community" textValue="Community" >
-          <Text>
-                <AntDesign name="star" color="black" size={14} />
-                </Text>
-              <MenuItemLabel size='sm' ml={5}>
-                Edit
-              </MenuItemLabel>
-          </MenuItem>
-          <MenuItem key="Plugins" textValue="Plugins">
-              {/* PuzzleIcon is imported from 'lucide-react-native' */}
-              {/* <Icon as={PuzzleIcon} size="sm" mr='$2'/> */}
-              <MenuItemLabel size='sm'>
-                Delete
-              </MenuItemLabel>
-          </MenuItem>
-          <MenuItem key="Theme" textValue="Theme">
-              {/* PaintBucket is imported from 'lucide-react-native' */}
-              {/* <Icon as={PaintBucket} size="sm" mr='$2'/> */}
-              <MenuItemLabel size='sm'>
-                Add A Pin
-              </MenuItemLabel>
-          </MenuItem>
-          
-          
-        </Menu>
-
-
-                
-              </Box>
-              <Box
-                flexDirection="row"
-                justifyContent="space-between"
-                alignItems="center">
-                {/* ------------image content box----------------- */}
-                <Box flexDirection="row" gap={10}>
+            <ScrollView key={data.id}>
+            <VStack>
+              <Box py={5}>
+                <HStack
+                  justifyContent="space-between"
+                  alignItems="center"
+                  mx="$2"
+                  p="$2"
+                  py="$3"
+                  position="relative">
+                  {/* user / avater  */}
                   <Box
-                    backgroundColor="$#4849BF"
-                    w={45}
+                    backgroundColor='#ECECEC'
                     h={45}
-                    borderRadius={50}
+                    w={45}
+                    borderRadius="$md"
                     justifyContent="center"
                     alignItems="center">
-                    <Image
-                      w={25}
-                      h={25}
-                      m={'auto'}
-                      source={savingIcon}
-                      alt="lol"
-                    />
+                    <Image w={"$7"} h={"$7"} source={money} alt='cash history'/>
                   </Box>
-                  <Box>
-                    <Text>
-                      Mobile-Bkash
-                    </Text>
-                    <Text>01734431369</Text>
-                    <Text>23 Mar, 23- 12.00 PM</Text>
-                  </Box>
-                </Box>
+                  {/* cost info  */}
+                  <VStack gap="-$1">
+                    <Box flexDirection='row' alignContent='center' gap={5}>
+                     
+                      <Text fontSize={20} fontWeight={700} color='#01A542'>$700 </Text>
+                      <Text>
+                        <FontAwesome name="exclamation-circle" size={16} color="red" />
+                      </Text>
+                    </Box>
+                    <Box>
+                      <Text fontSize={11}>20 Dec, 23 | 10.10 PM</Text>
+                    </Box>
+                    
 
-                {/* ------------price content box----------------- */}
-                <Box>
-                  <Text>10000$</Text>
-                </Box>
-                {/* ------------arrow content box----------------- */}
-                <Box>
-                  <Text> <AntDesign name="right" color="black" size={16} /> </Text>
-                </Box>
+                    
+                  </VStack>
+                  {/* _____________Cash Paid History____________  */}
+                  <TouchableOpacity>
+                    <Image w={"$7"} h={"$7"} source={cash} alt='cash history'/>
+                  </TouchableOpacity>
+  
+                  {/* ____________All History______________  */}
+                  <TouchableOpacity>
+                  <Image w={"$6"} h={"$6"} source={history} alt='cash history'/>
+                  </TouchableOpacity>
+                  <Box p="$1" position="relative" right={0} top={2}>
+                    <Menu
+                      placement="bottom"
+                      // right="$4"
+                      top="-$4"
+                      width="$16"
+                      gap="-$1"
+                      trigger={({...triggerProps}) => {
+                        return (
+                          <TouchableOpacity {...triggerProps}>
+                            <Feather
+                              name="more-vertical"
+                              size={20}
+                              color="gray"
+                            />
+                          </TouchableOpacity>
+                        );
+                      }}>
+                
+                      <MenuItem
+                        key="Mark As Important"
+                        textValue="Mark As Important">
+                        {/* PuzzleIcon is imported from 'lucide-react-native' */}
+                        {/* <Icon as={PuzzleIcon} size="sm" mr="$2" /> */}
+                        <MenuItemLabel size="md">Withdraw</MenuItemLabel>
+                      </MenuItem>
+  
+                      <MenuItem key="Edit" textValue="Edit">
+                        {/* <Icon as={SettingsIcon} size="sm" mr="$2" /> */}
+                        <MenuItemLabel size="md">Edit</MenuItemLabel>
+                      </MenuItem>
+                      <MenuItem key="Delete" textValue="Delete">
+                        {/* <Icon as={AddIcon} size="sm" mr="$2" /> */}
+                        <MenuItemLabel size="md">Delete</MenuItemLabel>
+                      </MenuItem>
+                      <MenuItem key="Set A Deadline" textValue="Set A Deadline">
+                        {/* <Icon as={AddIcon} size="sm" mr="$2" /> */}
+                        <MenuItemLabel size="md">Move</MenuItemLabel>
+                      </MenuItem>
+                    </Menu>
+                  </Box>
+                </HStack>
+                <View
+                  style={{
+                    borderStyle: 'dashed',
+                    borderColor: 'gray',
+                    borderBottomWidth: 1,
+                    marginHorizontal: '4%',
+                  }}></View>
               </Box>
-            </Box>
-          </TouchableOpacity>
+            </VStack>
+          </ScrollView>
+
+          
 
             
           );
         })}
+
+       <CommonWriteBox
+          icon={<FontAwesome name="fax" color="white" size={30} />}
+          title="Total Money"
+          amount="500"
+          btTitle="Add Savings"
+          modal={modal}
+          setModal={setModal}
+        />
+
+       <CustomModal
+          modalVisible={modal}
+          setModalVisible={setModal}
+          Radius={20}
+          height="65%"
+          width="90%"
+          appearance={true}
+          // backButton={true}
+          // backButtonTitle="Modal Open hoise"
+        >
+          <Box>
+            <Box my="$2" justifyContent="center" alignItems="center">
+              <FontAwesome name="user" size={45} color="gray" />
+            </Box>
+
+            <VStack px="$1" gap="$4" mt="$3">
+              <Input rounded="$lg">
+                <InputField placeholder="Full Name" />
+              </Input>
+              <Input rounded="$lg">
+                <InputField placeholder="Phone Number" />
+              </Input>
+              <Input rounded="$lg">
+                <InputField placeholder="Address" />
+              </Input>
+              <Input rounded="$lg">
+                <InputField placeholder="Amount" />
+              </Input>
+              <Input rounded="$lg">
+                <InputField placeholder="Reason" />
+              </Input>
+              <Input rounded="$lg" w="$20">
+                <InputField placeholder="Date" />
+              </Input>
+              <HStack
+                gap="$3"
+                justifyContent="space-around"
+                alignItems="center"
+                mt="$3">
+                <Button
+                  action="positive"
+                  w="40%"
+                  onPress={() =>
+                    RegisteredUser({
+                      email: 'arifbiswas@gamil.com',
+                      name: 'arifbiswas',
+                      password: 'lolmama',
+                    })
+                  }>
+                  <ButtonIcon as={AddIcon} size="xl" />
+                  <ButtonText px="$2">Add</ButtonText>
+                </Button>
+                <Button
+                  w="40%"
+                  action="negative"
+                  onPress={() => setModal(false)}>
+                  <ButtonIcon as={CloseIcon} size="xl" />
+                  <ButtonText px="$2">Cancel</ButtonText>
+                </Button>
+              </HStack>
+            </VStack>
+          </Box>
+        </CustomModal>
       </Box>
+      </Box>
+     
+      
     </GlueStackProvider>
   )
 }
