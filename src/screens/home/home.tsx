@@ -269,7 +269,7 @@ export default function Home({navigation}: any) {
                 Debt
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('budgets')}>
               <Box
                 style={{
                   backgroundColor: globalStyle.primary,
