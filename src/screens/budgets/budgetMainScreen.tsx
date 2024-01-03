@@ -54,7 +54,7 @@ const BudgetMainScreen = ({navigation}: any) => {
       
       {datas.map((data, i) => {
           return (
-         <TouchableOpacity key={data.id} onPress={() => navigation.navigate('Savings-History')}>
+         <TouchableOpacity key={data.id} onPress={() => navigation.navigate('budgets-list')}>
            <Box
               key={i}
               borderWidth={1}
