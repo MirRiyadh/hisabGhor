@@ -73,7 +73,7 @@ const BudgetSectorList = () => {
                   <VStack gap="-$1">
                     <Box flexDirection='row' alignContent='center' gap={5}>
                      
-                      <Text fontSize={20} fontWeight={'$bold'} color='#01A542'>Medicine </Text>
+                      <Text fontSize={20} fontWeight={'$bold'} >Medicine </Text>
                       <Text>
                         <FontAwesome name="exclamation-circle" size={16} color="red" />
                       </Text>
@@ -87,7 +87,7 @@ const BudgetSectorList = () => {
                   </VStack>
                   {/* _____________Cash Paid History____________  */}
                   <TouchableOpacity>
-                    <Text>$5000</Text>
+                    <Text color='#01A542'>$5000</Text>
                   </TouchableOpacity>
   
                   {/* ____________All History______________  */}
