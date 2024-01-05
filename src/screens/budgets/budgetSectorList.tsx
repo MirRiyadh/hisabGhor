@@ -15,6 +15,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import CommonWriteBox from '../../custom/commonWriteBox/CommonWriteBox';
 import CustomModal from '../../custom/customModal/CustomModal';
+import { RegisteredUser } from '../../../database/controllers/user.controllers';
 
 const BudgetSectorList = () => {
   const [searchText, setSearchText] = useState('');
@@ -73,7 +74,7 @@ const BudgetSectorList = () => {
                   <VStack gap="-$1">
                     <Box flexDirection='row' alignContent='center' gap={5}>
                      
-                      <Text fontSize={20} fontWeight={'$bold'} >Medicine </Text>
+                      <Text fontSize={18} fontWeight={'$bold'} >Medicine </Text>
                       <Text>
                         <FontAwesome name="exclamation-circle" size={16} color="red" />
                       </Text>
@@ -87,7 +88,7 @@ const BudgetSectorList = () => {
                   </VStack>
                   {/* _____________Cash Paid History____________  */}
                   <TouchableOpacity>
-                    <Text color='#01A542'>$5000</Text>
+                    <Text fontSize={20} fontWeight='$bold' color='#01A542'>$5000</Text>
                   </TouchableOpacity>
   
                   {/* ____________All History______________  */}
