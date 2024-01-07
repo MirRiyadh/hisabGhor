@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const loanMainScreen = () => {
+const LoanMainScreen = () => {
   return (
     <View>
       <Text>loanMainScreen</Text>
@@ -9,4 +9,4 @@ const loanMainScreen = () => {
   )
 }
 
-export default loanMainScreen
+export default LoanMainScreen

@@ -8,6 +8,7 @@ import DueAccountsDetailsScreen from '../screens/due/DueAccountsDetailsScreen';
 import SavingsHistoryScreen from '../screens/savings/savingsHistoryScreen';
 import BudgetMainScreen from '../screens/budgets/budgetMainScreen';
 import BudgetSectorList from '../screens/budgets/budgetSectorList';
+import LoanMainScreen from '../screens/Loan/loanMainScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -74,6 +75,14 @@ function HomeRoutes() {
       <Stack.Screen
         name="budgets-list"
         component={BudgetSectorList}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="loans"
+        component={LoanMainScreen}
         options={{
           headerShown: false,
         }}
