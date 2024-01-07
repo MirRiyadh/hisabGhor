@@ -243,7 +243,7 @@ export default function Home({navigation}: any) {
                 Saving's
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('loans')}>
               <Box
                 style={{
                   backgroundColor: globalStyle.primary,
@@ -266,7 +266,7 @@ export default function Home({navigation}: any) {
                 fontSize="$xs"
                 fontWeight="$semibold"
                 color={XStore.isDark === 'dark' ? '$black' : '$coolGray300'}>
-                Debt
+                Loan
               </Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('budgets')}>

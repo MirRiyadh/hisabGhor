@@ -37,8 +37,9 @@ const BudgetMainScreen = ({navigation}: any) => {
   ];
   return (
     <GlueStackProvider>
-      <Box height={"100%"}>
-      <CommonHeaderPlusBack
+      <Box height={"100%"} justifyContent='space-between'>
+        <Box>
+        <CommonHeaderPlusBack
         isBack={true}
         title="Budget"
         isSearch={true}
@@ -221,9 +222,10 @@ const BudgetMainScreen = ({navigation}: any) => {
             </VStack>
           </Box>
         </CustomModal>
+       </Box>
       </Box>
 
-        <CommonWriteBox
+      <CommonWriteBox
           icon={<FontAwesome name="fax" color="white" size={30} />}
           title="Total"
           amount="10500"
@@ -231,8 +233,11 @@ const BudgetMainScreen = ({navigation}: any) => {
           modal={modal}
           setModal={setModal}
          />
-      </Box>
        
+
+        
+      </Box>
+      
     </GlueStackProvider>
   )
 }
