@@ -37,7 +37,7 @@ const SavingsScreen = ({navigation}: any) => {
       />
       <CommonDateFilter />
       
-      <Box height={'100%'} px={20} my={10} justifyContent='space-between'>
+      <Box height={'100%'} px={20} my={10} >
         <Box>{datas.map((data, i) => {
           return (
          <TouchableOpacity key={data.id} onPress={() => navigation.navigate('Savings-History')}>
@@ -139,23 +139,12 @@ const SavingsScreen = ({navigation}: any) => {
             </Box>
           </TouchableOpacity>
 
+
             
           );
-        })}</Box>
+        })}
         
-      
-        
-        <Box flexDirection='column' justifyContent='flex-end'>
-          <CommonWriteBox
-          icon={<AntDesign name="star" color="white" size={35} />}
-          title="Total Savings"
-          amount="1500"
-          btTitle="Add People"
-          modal={modal}
-          setModal={setModal}
-        />
-
-          <CustomModal
+        <CustomModal
           modalVisible={modal}
           setModalVisible={setModal}
           Radius={20}
@@ -169,6 +158,21 @@ const SavingsScreen = ({navigation}: any) => {
             <Text>Savings</Text>
           </Box>
         </CustomModal>
+        </Box>
+        
+      
+        
+        <Box flexDirection='column' justifyContent='flex-end'>
+          <CommonWriteBox
+          icon={<AntDesign name="star" color="white" size={35} />}
+          title="Total Savings"
+          amount="1500"
+          btTitle="Add People"
+          modal={modal}
+          setModal={setModal}
+        />
+
+          
         </Box>
         
 
