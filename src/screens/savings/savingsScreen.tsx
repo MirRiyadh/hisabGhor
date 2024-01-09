@@ -38,7 +38,8 @@ const SavingsScreen = ({navigation}: any) => {
       <CommonDateFilter />
       
       <Box height={'100%'} px={20} my={10} >
-        <Box>{datas.map((data, i) => {
+        <Box>
+          {datas.map((data, i) => {
           return (
          <TouchableOpacity key={data.id} onPress={() => navigation.navigate('Savings-History')}>
            <Box
@@ -160,8 +161,6 @@ const SavingsScreen = ({navigation}: any) => {
         </CustomModal>
         </Box>
         
-      
-        
         <Box flexDirection='column' justifyContent='flex-end'>
           <CommonWriteBox
           icon={<AntDesign name="star" color="white" size={35} />}
@@ -171,13 +170,7 @@ const SavingsScreen = ({navigation}: any) => {
           modal={modal}
           setModal={setModal}
         />
-
-          
-        </Box>
-        
-
-
-        
+        </Box>   
       </Box>
       
     </GlueStackProvider>
