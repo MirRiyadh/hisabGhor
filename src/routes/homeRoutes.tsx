@@ -9,6 +9,7 @@ import SavingsHistoryScreen from '../screens/savings/savingsHistoryScreen';
 import BudgetMainScreen from '../screens/budgets/budgetMainScreen';
 import BudgetSectorList from '../screens/budgets/budgetSectorList';
 import LoanMainScreen from '../screens/Loan/loanMainScreen';
+import LoanHistoryScreen from '../screens/Loan/loanHistoryScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -83,6 +84,13 @@ function HomeRoutes() {
       <Stack.Screen
         name="loans"
         component={LoanMainScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="loans-history"
+        component={LoanHistoryScreen}
         options={{
           headerShown: false,
         }}
