@@ -1,11 +1,13 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
+import GlueStackProvider from '../../gluestack_config/gluestackProvider';
+import { Text } from '@gluestack-ui/themed';
 
 const LoanHistoryScreen = () => {
   return (
-    <View>
+    <GlueStackProvider>
       <Text>loanHistoryScreen</Text>
-    </View>
+    </GlueStackProvider>
   )
 }
 
