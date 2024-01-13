@@ -28,6 +28,7 @@ const SavingsScreen = ({navigation}: any) => {
   ];
   return (
     <GlueStackProvider>
+      <Box height={'100%'} justifyContent='space-between'>
       <CommonHeaderPlusBack
         isBack={true}
         title="Savings"
@@ -37,7 +38,7 @@ const SavingsScreen = ({navigation}: any) => {
       />
       <CommonDateFilter />
       
-      <Box height={'100%'} px={20} my={10} >
+      <Box  px={20} my={10} >
         <Box>
           {datas.map((data, i) => {
           return (
@@ -160,8 +161,10 @@ const SavingsScreen = ({navigation}: any) => {
           </Box>
         </CustomModal>
         </Box>
-        
-        <Box flexDirection='column' justifyContent='flex-end'>
+           
+      </Box>
+
+      
           <CommonWriteBox
           icon={<AntDesign name="star" color="white" size={35} />}
           title="Total Savings"
@@ -170,8 +173,9 @@ const SavingsScreen = ({navigation}: any) => {
           modal={modal}
           setModal={setModal}
         />
-        </Box>   
+        
       </Box>
+      
       
     </GlueStackProvider>
   );

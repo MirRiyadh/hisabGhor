@@ -57,7 +57,7 @@ const LoanMainScreen = ({navigation}: any) => {
       
       {datas.map((data, i) => {
           return (
-         <TouchableOpacity key={data.id} onPress={() => navigation.navigate('budgets-list')}>
+         <TouchableOpacity key={data.id} onPress={() => navigation.navigate('loans-history')}>
            <Box
               key={i}
               borderWidth={1}
