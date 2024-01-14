@@ -29,6 +29,9 @@ const SavingsScreen = ({navigation}: any) => {
   return (
     <GlueStackProvider>
       <Box height={'100%'} justifyContent='space-between'>
+      
+      
+      <Box >
       <CommonHeaderPlusBack
         isBack={true}
         title="Savings"
@@ -36,10 +39,9 @@ const SavingsScreen = ({navigation}: any) => {
         searchText={searchText}
         setSearchText={setSearchText}
       />
-      <CommonDateFilter />
-      
-      <Box  px={20} my={10} >
-        <Box>
+     
+        <Box px={20} my={7}>
+        <CommonDateFilter />
           {datas.map((data, i) => {
           return (
          <TouchableOpacity key={data.id} onPress={() => navigation.navigate('Savings-History')}>
@@ -139,10 +141,7 @@ const SavingsScreen = ({navigation}: any) => {
                 </Box>
               </Box>
             </Box>
-          </TouchableOpacity>
-
-
-            
+          </TouchableOpacity>        
           );
         })}
         
@@ -174,8 +173,7 @@ const SavingsScreen = ({navigation}: any) => {
           setModal={setModal}
         />
         
-      </Box>
-      
+      </Box>     
       
     </GlueStackProvider>
   );
