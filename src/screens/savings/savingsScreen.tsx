@@ -157,6 +157,8 @@ const SavingsScreen = ({navigation}: any) => {
          >
           <Box>
             <Text>Savings</Text>
+            <Text>Savings 2</Text>
+            <Text>Savings 3</Text>
           </Box>
         </CustomModal>
         </Box>
