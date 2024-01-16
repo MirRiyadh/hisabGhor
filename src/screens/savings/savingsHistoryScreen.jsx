@@ -59,8 +59,8 @@ const SavingsHistoryScreen = () => {
                   p="$2"
                   py="$3"
                   position="relative">
-                  {/* user / avater  */}
-                  <Box
+                    <HStack gap='$3'>
+                    <Box
                     backgroundColor='#ECECEC'
                     h={45}
                     w={45}
@@ -85,10 +85,13 @@ const SavingsHistoryScreen = () => {
 
                     
                   </VStack>
+                  </HStack>
+                  {/* user / avater  */}
+                  
                   {/* _____________Cash Paid History____________  */}
-                  <TouchableOpacity>
-                    <Image w={"$7"} h={"$7"} source={cash} alt='cash history'/>
-                  </TouchableOpacity>
+                  {/* <TouchableOpacity>
+                  <Text fontSize={20} fontWeight={700} color='#01A542'>$700 </Text>
+                  </TouchableOpacity> */}
   
                   {/* ____________All History______________  */}
                   <TouchableOpacity>

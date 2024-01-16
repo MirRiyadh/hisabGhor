@@ -14,7 +14,7 @@ type CustomModalProps = {
   modalVisible: boolean;
   setModalVisible?: Function | any;
   children: JSX.Element;
-  height?: string;
+  height?: string | number;
   paddingHorizontal?: string;
   slide?: 'slide' | 'fade';
   onlyTopRadius?: number;
