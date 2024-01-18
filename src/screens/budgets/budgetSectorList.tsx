@@ -191,6 +191,9 @@ const BudgetSectorList = () => {
               <Input rounded="$lg">
                 <InputField placeholder="Amount" />
               </Input>
+              <Input rounded="$lg">
+                <InputField placeholder="Amount" />
+              </Input>
               
               <Input rounded="$lg" w="$20">
                 <InputField placeholder="Date" />
