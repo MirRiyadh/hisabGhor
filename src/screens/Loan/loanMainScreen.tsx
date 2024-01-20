@@ -55,7 +55,7 @@ const LoanMainScreen = ({navigation}: any) => {
 
       <Box px={20} my={7}>
       
-      {datas.map((data, i) => {
+         {datas.map((data, i) => {
           return (
          <TouchableOpacity key={data.id} onPress={() => navigation.navigate('loans-history')}>
            <Box
@@ -198,7 +198,7 @@ const LoanMainScreen = ({navigation}: any) => {
           modalVisible={modal}
           setModalVisible={setModal}
           Radius={20}
-          height="65%"
+          height={340}
           width="90%"
           appearance={true}
           // backButton={true}
@@ -211,19 +211,10 @@ const LoanMainScreen = ({navigation}: any) => {
 
             <VStack px="$1" gap="$4" mt="$3">
               <Input rounded="$lg">
-                <InputField placeholder="Full Name" />
-              </Input>
-              <Input rounded="$lg">
-                <InputField placeholder="Phone Number" />
-              </Input>
-              <Input rounded="$lg">
-                <InputField placeholder="Address" />
+                <InputField placeholder="Sector Name" />
               </Input>
               <Input rounded="$lg">
                 <InputField placeholder="Amount" />
-              </Input>
-              <Input rounded="$lg">
-                <InputField placeholder="Reason" />
               </Input>
               <Input rounded="$lg" w="$20">
                 <InputField placeholder="Date" />
@@ -264,7 +255,7 @@ const LoanMainScreen = ({navigation}: any) => {
           icon={<FontAwesome name="fax" color="white" size={20} />}
           title="Total"
           amount="10500"
-          btTitle="Add Loan"
+          btTitle="Add Budget"
           modal={modal}
           setModal={setModal}
          />
