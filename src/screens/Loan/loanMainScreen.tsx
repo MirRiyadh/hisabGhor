@@ -198,7 +198,7 @@ const LoanMainScreen = ({navigation}: any) => {
           modalVisible={modal}
           setModalVisible={setModal}
           Radius={20}
-          height={340}
+          height={345}
           width="90%"
           appearance={true}
           // backButton={true}
