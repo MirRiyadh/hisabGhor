@@ -254,7 +254,7 @@ const LoanMainScreen = ({navigation}: any) => {
       <CommonWriteBox
           icon={<FontAwesome name="fax" color="white" size={20} />}
           title="Total"
-          amount="10500"
+          amount="1500"
           btTitle="Add Budget"
           modal={modal}
           setModal={setModal}
