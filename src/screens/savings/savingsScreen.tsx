@@ -205,7 +205,7 @@ const SavingsScreen = ({navigation}: any) => {
                     RegisteredUser({
                       email: 'arifbiswas@gamil.com',
                       name: 'arifbiswas',
-                      password: 'lolmama',
+                      password: 'lmama',
                     })
                   }>
                   <ButtonIcon as={AddIcon} size="xl"  />
