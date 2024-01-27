@@ -4,6 +4,8 @@ import GlueStackProvider from '../../gluestack_config/gluestackProvider';
 import CommonHeaderPlusBack from '../../custom/commonHeader/CommonHeaderPlusBack';
 import CommonWriteBox from '../../custom/commonWriteBox/CommonWriteBox';
 
+const dueIcon = require('../../../assets/icons/payables.png');
+
 import {
   Avatar,
   Box,
@@ -21,7 +23,10 @@ import {
   GlobeIcon,
   SettingsIcon,
   AddIcon,
+  CloseIcon,
   Divider,
+  ButtonIcon,
+  InputField,
 } from '@gluestack-ui/themed';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
@@ -29,6 +34,9 @@ import CustomModal from '../../custom/customModal/CustomModal';
 import {Text} from '@gluestack-ui/themed';
 import CommonDateFilter from '../../custom/dateFilter/commonDateFilter';
 import {globalStyle} from '../../styles/GlobalStyle';
+import { RegisteredUser } from '../../../database/controllers/user.controllers';
+import { Image } from '@gluestack-ui/themed';
+import { Input } from '@gluestack-ui/themed';
 
 const DueAccountsDetailsScreen = () => {
   const [searchText, setSearchText] = useState();
@@ -183,19 +191,78 @@ const DueAccountsDetailsScreen = () => {
           setModal={setModal}
         />
 
-        <CustomModal
+<CustomModal
           modalVisible={modal}
           setModalVisible={setModal}
           Radius={20}
-          height="80%"
+          height={400}
           width="90%"
           appearance={true}
           backButton={true}
           // backButtonTitle="Modal Open hoise"
-        >
-          <Box>
-            <Text>Arif</Text>
+         >
+          <>
+          <Box my="$2" justifyContent="center" alignItems="center">
+              <Image  
+              w={60}
+              h={60}
+              m={'auto'}
+              source={dueIcon}
+              alt="savings"/>
+            </Box>
+          <ScrollView>
+            <Box>
+            <VStack px="$1" gap="$4" mt="$3">
+              <Input rounded="$lg">
+                <InputField placeholder="Reason" />
+              </Input>
+              <Input rounded="$lg">
+                <InputField placeholder="Amount" />
+              </Input>
+              <Input rounded="$lg">
+                <InputField placeholder="Payable Amount(Optional)" />
+              </Input>
+              
+              
+              <Input rounded="$lg" w="25%" >
+                <InputField fontSize={16} placeholder="📅 Date" />
+              </Input>
+              
+            </VStack>
           </Box>
+          </ScrollView>
+          <HStack
+                gap="$5"
+                justifyContent="space-around"
+                alignItems="center"
+                mt="$5"
+                pb="$2">
+                <Button
+                  backgroundColor='#4849BF'
+                  action="positive"
+                  w="45%"
+                  onPress={() =>
+                    RegisteredUser({
+                      email: 'arifbiswas@gamil.com',
+                      name: 'arifbiswas',
+                      password: 'lmama',
+                    })
+                  }>
+                  <ButtonIcon as={AddIcon} size="xl"  />
+                  <ButtonText px="$2" fontSize={18} fontWeight='400'>ADD</ButtonText>
+                </Button>
+                <Button
+                backgroundColor='#6f6fd9'
+                  w="45%"
+                  action="negative"
+                  onPress={() => setModal(false)}>
+                  <ButtonIcon as={CloseIcon} size="xl" />
+                  <ButtonText px="$2" fontSize={18} fontWeight='400'>Cancel</ButtonText>
+                </Button>
+          </HStack>
+          </>
+          
+          
         </CustomModal>
       </Box>
     </GlueStackProvider>
