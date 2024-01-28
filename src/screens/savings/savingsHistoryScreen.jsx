@@ -1,6 +1,7 @@
 const cash = require('../../../assets/icons/cash-withdrawal.png');
 const history = require('../../../assets/icons/file.png');
 const money = require('../../../assets/icons/money-black.png');
+const addSavings = require('../../../assets/icons/save-money-3.png');
 
 import { View } from 'react-native'
 import React, { useState } from 'react'
@@ -34,20 +35,22 @@ const SavingsHistoryScreen = () => {
 
   return (
     <GlueStackProvider>
-      <Box height={"100%"}>
-      <CommonHeaderPlusBack
+      <Box height={"100%"} justifyContent='space-between'>
+
+        <Box>
+       <CommonHeaderPlusBack
         isBack={true}
         title="Bkash Number"
         isSearch={true}
         searchText={searchText}
         setSearchText={setSearchText}
-      />
-      <CommonDateFilter />
-      <Box mx="$4" my="$2">
+       />
+       <CommonDateFilter />
+       <Box mx="$4" my="$2">
           <Divider />
         </Box>
-      <Box px={20} my={7}>
-      {datas.map((data, i) => {
+       <Box px={20} my={7}>
+       {datas.map((data, i) => {
           return (
             <ScrollView key={data.id}>
             <VStack>
@@ -73,7 +76,7 @@ const SavingsHistoryScreen = () => {
                   <VStack gap="-$1">
                     <Box flexDirection='row' alignContent='center' gap={5}>
                      
-                      <Text fontSize={20} fontWeight={700} color='#01A542'>$700 </Text>
+                      <Text fontSize={20} fontWeight={700} color='#01A542'>$760 </Text>
                       <Text>
                         <FontAwesome name="exclamation-circle" size={16} color="red" />
                       </Text>
@@ -156,7 +159,81 @@ const SavingsHistoryScreen = () => {
           );
         })}
 
-       <CommonWriteBox
+       
+
+        <CustomModal
+          modalVisible={modal}
+          setModalVisible={setModal}
+          Radius={20}
+          height={300}
+          width="90%"
+          appearance={true}
+          backButton={true}
+          // backButtonTitle="Modal Open hoise"
+         >
+          <>
+          <Box my="$2" justifyContent="center" alignItems="center">
+              <Image  
+              w={60}
+              h={60}
+              m={'auto'}
+              source={addSavings}
+              alt="savings"/>
+            </Box>
+          <ScrollView>
+            <Box>
+            <VStack px="$1" gap="$4" mt="$3">
+              
+              <Input rounded="$lg">
+                <InputField placeholder="Amount" />
+              </Input>
+             
+              
+              
+              <Input rounded="$lg" w="25%" >
+                <InputField fontSize={16} placeholder="📅 Date" />
+              </Input>
+              
+            </VStack>
+          </Box>
+          </ScrollView>
+          <HStack
+                gap="$5"
+                justifyContent="space-around"
+                alignItems="center"
+                mt="$5"
+                pb="$2">
+                <Button
+                  backgroundColor='#4849BF'
+                  action="positive"
+                  w="45%"
+                  onPress={() =>
+                    RegisteredUser({
+                      email: 'arifbiswas@gamil.com',
+                      name: 'arifbiswas',
+                      password: 'lmama',
+                    })
+                  }>
+                  <ButtonIcon as={AddIcon} size="xl"  />
+                  <ButtonText px="$2" fontSize={18} fontWeight='400'>ADD</ButtonText>
+                </Button>
+                <Button
+                backgroundColor='#6f6fd9'
+                  w="45%"
+                  action="negative"
+                  onPress={() => setModal(false)}>
+                  <ButtonIcon as={CloseIcon} size="xl" />
+                  <ButtonText px="$2" fontSize={18} fontWeight='400'>Cancel</ButtonText>
+                </Button>
+          </HStack>
+          </>
+          
+          
+        </CustomModal>
+      </Box>
+        </Box>
+
+        <CommonWriteBox
           icon={<FontAwesome name="fax" color="white" size={30} />}
           title="Total Money"
           amount="500"
@@ -164,72 +241,8 @@ const SavingsHistoryScreen = () => {
           modal={modal}
           setModal={setModal}
         />
-
-       <CustomModal
-          modalVisible={modal}
-          setModalVisible={setModal}
-          Radius={20}
-          height="65%"
-          width="90%"
-          appearance={true}
-          // backButton={true}
-          // backButtonTitle="Modal Open hoise"
-        >
-          <Box>
-            <Box my="$2" justifyContent="center" alignItems="center">
-              <FontAwesome name="user" size={45} color="gray" />
-            </Box>
-
-            <VStack px="$1" gap="$4" mt="$3">
-              <Input rounded="$lg">
-                <InputField placeholder="Full Name" />
-              </Input>
-              <Input rounded="$lg">
-                <InputField placeholder="Phone Number" />
-              </Input>
-              <Input rounded="$lg">
-                <InputField placeholder="Address" />
-              </Input>
-              <Input rounded="$lg">
-                <InputField placeholder="Amount" />
-              </Input>
-              <Input rounded="$lg">
-                <InputField placeholder="Reason" />
-              </Input>
-              <Input rounded="$lg" w="$20">
-                <InputField placeholder="Date" />
-              </Input>
-              <HStack
-                gap="$3"
-                justifyContent="space-around"
-                alignItems="center"
-                mt="$3">
-                <Button
-                  action="positive"
-                  w="40%"
-                  onPress={() =>
-                    RegisteredUser({
-                      email: 'arifbiswas@gamil.com',
-                      name: 'arifbiswas',
-                      password: 'lolmama',
-                    })
-                  }>
-                  <ButtonIcon as={AddIcon} size="xl" />
-                  <ButtonText px="$2">Add</ButtonText>
-                </Button>
-                <Button
-                  w="40%"
-                  action="negative"
-                  onPress={() => setModal(false)}>
-                  <ButtonIcon as={CloseIcon} size="xl" />
-                  <ButtonText px="$2">Cancel</ButtonText>
-                </Button>
-              </HStack>
-            </VStack>
-          </Box>
-        </CustomModal>
       </Box>
-      </Box>
+      
      
       
     </GlueStackProvider>

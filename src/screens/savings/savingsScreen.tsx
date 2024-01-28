@@ -219,7 +219,7 @@ const SavingsScreen = ({navigation}: any) => {
                   <ButtonIcon as={CloseIcon} size="xl" />
                   <ButtonText px="$2" fontSize={18} fontWeight='400'>Cancel</ButtonText>
                 </Button>
-              </HStack>
+          </HStack>
           </>
           
           

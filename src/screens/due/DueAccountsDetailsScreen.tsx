@@ -220,7 +220,7 @@ const DueAccountsDetailsScreen = () => {
                 <InputField placeholder="Amount" />
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Payable Amount(Optional)" />
+                <InputField placeholder="Paid Amount(Optional)" />
               </Input>
               
               
