@@ -43,7 +43,7 @@ const LoanMainScreen = ({navigation}: any) => {
         <Box>
         <CommonHeaderPlusBack
         isBack={true}
-        title="Budget"
+        title="Loan"
         isSearch={true}
         searchText={searchText}
         setSearchText={setSearchText}
