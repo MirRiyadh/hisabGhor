@@ -77,7 +77,7 @@ const LoanMainScreen = ({navigation}: any) => {
                   <TouchableOpacity {...triggerProps}>
                           <AntDesign
                             name="ellipsis1"
-                            size={20}
+                            size={18}
                             color="black"
                           />
                   </TouchableOpacity>
