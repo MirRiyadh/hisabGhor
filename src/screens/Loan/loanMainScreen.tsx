@@ -36,6 +36,8 @@ const LoanMainScreen = ({navigation}: any) => {
       amount: '',
     },
     {id: '2', img: '', title: '', number: '', date: '', amount: ''},
+    {id: '3', img: '', title: '', number: '', date: '', amount: ''},
+    {id: '4', img: '', title: '', number: '', date: '', amount: ''},
   ];
   return (
     <GlueStackProvider>
