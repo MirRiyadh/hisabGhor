@@ -22,6 +22,17 @@ const BudgetSectorList = () => {
   const [searchText, setSearchText] = useState('');
   const [isPaid, setIsPaid] = useState(false);
   const [modal, setModal] = useState(false);
+ 
+  const [budgetData, setBudgetData] = useState({
+    title:"",
+    amount: 0,
+    reason: "",
+    date: new Date()
+  });
+
+  console.log(budgetData);
+  
+
   const datas = [
     {
       id: '1',
@@ -183,14 +194,14 @@ const BudgetSectorList = () => {
             <Box>
             <VStack px="$1" gap="$4" mt="$3">
               <Input rounded="$lg" >
-                <InputField placeholder="Title" />
+                <InputField placeholder="Title" onChangeText={(text)=>setBudgetData({...budgetData, title:text})}/>
               </Input>
               
               <Input rounded="$lg">
-                <InputField placeholder="Amount" />
+                <InputField placeholder="Amount" onChangeText={(text)=>setBudgetData({...budgetData, amount:Number(text)})} />
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Reason" />
+                <InputField placeholder="Reason" onChangeText={(text)=>setBudgetData({...budgetData, reason:text})} />
               </Input>
               
               <Input rounded="$lg" w="25%" >
