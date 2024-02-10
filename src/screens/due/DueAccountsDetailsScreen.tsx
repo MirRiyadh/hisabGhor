@@ -42,6 +42,16 @@ const DueAccountsDetailsScreen = () => {
   const [searchText, setSearchText] = useState();
   const [modal, setModal] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
+
+  const [dueDetailsData, setDueDetailsData] = useState({
+    amount: 0,
+    paidAmount: 0,
+    reason: "",
+    date: new Date()
+  });
+
+  console.log("Due Details Data",dueDetailsData);
+
   return (
     <GlueStackProvider>
       <Box h={'100%'}>
@@ -191,7 +201,7 @@ const DueAccountsDetailsScreen = () => {
           setModal={setModal}
         />
 
-<CustomModal
+      <CustomModal
           modalVisible={modal}
           setModalVisible={setModal}
           Radius={20}
@@ -214,13 +224,13 @@ const DueAccountsDetailsScreen = () => {
             <Box>
             <VStack px="$1" gap="$4" mt="$3">
               <Input rounded="$lg">
-                <InputField placeholder="Reason" />
+                <InputField placeholder="Reason" onChangeText={(text)=>setDueDetailsData({...dueDetailsData, reason:text})}/>
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Amount" />
+                <InputField placeholder="Amount" onChangeText={(text)=>setDueDetailsData({...dueDetailsData, amount:Number(text)})}/>
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Paid Amount(Optional)" />
+                <InputField placeholder="Paid Amount(Optional)" onChangeText={(text)=>setDueDetailsData({...dueDetailsData, paidAmount:Number(text)})}/>
               </Input>
               
               

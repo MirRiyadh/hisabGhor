@@ -20,6 +20,17 @@ import { RegisteredUser } from '../../../database/controllers/user.controllers';
 const SavingsScreen = ({navigation}: any) => {
   const [searchText, setSearchText] = useState('');
   const [modal, setModal] = useState(false);
+
+  const [savingsData, setSavingsData] = useState({
+    savingPlace:"",
+    number: 0,
+    amount: 0,
+    address: "",
+    date: new Date()
+  });
+
+  console.log("Savings Data",savingsData);
+
   const datas = [
     {
       id: '1',
@@ -173,16 +184,16 @@ const SavingsScreen = ({navigation}: any) => {
             <Box>
             <VStack px="$1" gap="$4" mt="$3">
               <Input rounded="$lg" >
-                <InputField placeholder="Saving Place" />
+                <InputField placeholder="Saving Place" onChangeText={(text)=>setSavingsData({...savingsData, savingPlace:text})}/>
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Mobile/AC no/Others" />
+                <InputField placeholder="Mobile/AC no/Others"  onChangeText={(text)=>setSavingsData({...savingsData, number:Number(text)})}/>
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Address" />
+                <InputField placeholder="Address" onChangeText={(text)=>setSavingsData({...savingsData, address:text})}/>
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Amount" />
+                <InputField placeholder="Amount" onChangeText={(text)=>setSavingsData({...savingsData, amount:Number(text)})}/>
               </Input>
               
               <Input rounded="$lg" w="25%" >

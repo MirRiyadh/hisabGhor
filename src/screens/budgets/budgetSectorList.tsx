@@ -23,14 +23,14 @@ const BudgetSectorList = () => {
   const [isPaid, setIsPaid] = useState(false);
   const [modal, setModal] = useState(false);
  
-  const [budgetData, setBudgetData] = useState({
+  const [budgetListData, setBudgetListData] = useState({
     title:"",
     amount: 0,
     reason: "",
     date: new Date()
   });
 
-  console.log(budgetData);
+  console.log(budgetListData);
   
 
   const datas = [
@@ -194,14 +194,14 @@ const BudgetSectorList = () => {
             <Box>
             <VStack px="$1" gap="$4" mt="$3">
               <Input rounded="$lg" >
-                <InputField placeholder="Title" onChangeText={(text)=>setBudgetData({...budgetData, title:text})}/>
+                <InputField placeholder="Title" onChangeText={(text)=>setBudgetListData({...budgetListData, title:text})}/>
               </Input>
               
               <Input rounded="$lg">
-                <InputField placeholder="Amount" onChangeText={(text)=>setBudgetData({...budgetData, amount:Number(text)})} />
+                <InputField placeholder="Amount" onChangeText={(text)=>setBudgetListData({...budgetListData, amount:Number(text)})} />
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Reason" onChangeText={(text)=>setBudgetData({...budgetData, reason:text})} />
+                <InputField placeholder="Reason" onChangeText={(text)=>setBudgetListData({...budgetListData, reason:text})} />
               </Input>
               
               <Input rounded="$lg" w="25%" >

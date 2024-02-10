@@ -21,6 +21,16 @@ const LoanHistoryScreen = () => {
   const [searchText, setSearchText] = useState('');
   const [isPaid, setIsPaid] = useState(false);
   const [modal, setModal] = useState(false);
+
+  const [loanHistoryData, setLoanHistoryData] = useState({
+    title:"",
+    amount: 0,
+    remark: "",
+    date: new Date()
+  });
+
+  console.log("loan History Data",loanHistoryData);
+
   const datas = [
     {
       id: '1',
@@ -184,13 +194,13 @@ const LoanHistoryScreen = () => {
             <Box>
             <VStack px="$1" gap="$4" mt="$3">
               <Input rounded="$lg" >
-                <InputField placeholder="Title" />
+                <InputField placeholder="Title" onChangeText={(text)=>setLoanHistoryData({...loanHistoryData, title:text})}/>
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Paid Amount" />
+                <InputField placeholder="Paid Amount" onChangeText={(text)=>setLoanHistoryData({...loanHistoryData, amount:Number(text)})}/>
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Remark (Optional)" />
+                <InputField placeholder="Remark (Optional)" onChangeText={(text)=>setLoanHistoryData({...loanHistoryData, remark:text})}/>
               </Input>
               
               <Input rounded="$lg" w="25%" >

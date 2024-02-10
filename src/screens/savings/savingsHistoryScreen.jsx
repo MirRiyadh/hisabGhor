@@ -21,6 +21,15 @@ const SavingsHistoryScreen = () => {
   const [searchText, setSearchText] = useState('');
   const [isPaid, setIsPaid] = useState(false);
   const [modal, setModal] = useState(false);
+
+  const [savingsHistoryData, setSavingsHistoryData] = useState({
+    amount: 0,
+    date: new Date()
+  });
+
+  console.log("Savings History Data",savingsHistoryData);
+
+
   const datas = [
     {
       id: '1',
@@ -185,7 +194,7 @@ const SavingsHistoryScreen = () => {
             <VStack px="$1" gap="$4" mt="$3">
               
               <Input rounded="$lg">
-                <InputField placeholder="Amount" />
+                <InputField placeholder="Amount" onChangeText={(text)=>setSavingsHistoryData({...savingsHistoryData, amount:Number(text)})}/>
               </Input>
              
               
