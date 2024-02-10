@@ -42,6 +42,18 @@ const AddDueAccountsScreen = ({navigation}: any) => {
   const [searchText, setSearchText] = useState();
   const [modal, setModal] = useState(false);
 
+  const [dueData, setDueData] = useState({
+    fullName:"",
+    phone:0,
+    address: "",
+    amount: 0,
+    reason: "",
+    date: new Date()
+  });
+
+  console.log("Due Data",dueData);
+  
+
   return (
     <GlueStackProvider>
       <Box h={'100%'}>
@@ -195,19 +207,19 @@ const AddDueAccountsScreen = ({navigation}: any) => {
             <Box>
             <VStack px="$1" gap="$4" mt="$3">
               <Input rounded="$lg" >
-                <InputField placeholder="Full Name" />
+                <InputField placeholder="Full Name" onChangeText={(text)=>setDueData({...dueData, fullName:text})}/>
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Phone Number" />
+                <InputField placeholder="Phone Number" onChangeText={(text)=>setDueData({...dueData, phone:Number(text)})} />
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Address" />
+                <InputField placeholder="Address" onChangeText={(text)=>setDueData({...dueData, address:text})}/>
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Amount" />
+                <InputField placeholder="Amount" onChangeText={(text)=>setDueData({...dueData, amount:Number(text)})}/>
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Reason" />
+                <InputField placeholder="Reason" onChangeText={(text)=>setDueData({...dueData, reason:text})}/>
               </Input>
               
               <Input rounded="$lg" w="25%" >

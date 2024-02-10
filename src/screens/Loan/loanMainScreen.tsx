@@ -26,6 +26,15 @@ const LoanMainScreen = ({navigation}: any) => {
   const [modal, setModal] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
 
+  const [loanData, setLoanData] = useState({
+    title:"",
+    amount: 0,
+    reason: "",
+    date: new Date()
+  });
+
+  console.log(loanData);
+
   const datas = [
     {
       id: '1',
@@ -219,13 +228,13 @@ const LoanMainScreen = ({navigation}: any) => {
             <Box>
             <VStack px="$1" gap="$4" mt="$3">
               <Input rounded="$lg" >
-                <InputField placeholder="Title" />
+                <InputField placeholder="Title" onChangeText={(text)=>setLoanData({...loanData, title:text})}/>
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Amount" />
+                <InputField placeholder="Amount" onChangeText={(text)=>setLoanData({...loanData, amount:Number(text)})}/>
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Reason" />
+                <InputField placeholder="Reason" onChangeText={(text)=>setLoanData({...loanData, reason:text})}/>
               </Input>
               
               <Input rounded="$lg" w="25%" >
