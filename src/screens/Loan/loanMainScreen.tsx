@@ -38,16 +38,19 @@ const LoanMainScreen = ({navigation}: any) => {
   const datas = [
     {
       id: '1',
-      img: '',
+      img: "https://i.ibb.co/7YDg6Yb/budget.png",
       title: '',
-      number: '',
-      date: '',
       amount: '',
+      date: '',
+
     },
     {id: '2', img: '', title: '', number: '', date: '', amount: ''}
     
    
   ];
+
+  
+  
   return (
     <GlueStackProvider>
       <Box height={"100%"} justifyContent='space-between'>
@@ -142,7 +145,7 @@ const LoanMainScreen = ({navigation}: any) => {
                       w={35}
                       h={35}
                       m={'auto'}
-                      source={savingIcon}
+                      source={data.img}
                       alt="lol"
                     />
                   </Box>
