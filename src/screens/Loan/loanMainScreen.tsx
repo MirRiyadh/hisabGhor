@@ -44,7 +44,8 @@ const LoanMainScreen = ({navigation}: any) => {
       date: '',
 
     },
-    {id: '2', img: '', title: '', number: '', date: '', amount: ''}
+    {id: '2', img: '', title: '', number: '', date: '', amount: ''},
+    {id: '3', img: '', title: '', number: '', date: '', amount: ''}
     
    
   ];
