@@ -25,6 +25,7 @@ const LoanMainScreen = ({navigation}: any) => {
   const [searchText, setSearchText] = useState('');
   const [modal, setModal] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
+  
 
   const [loanData, setLoanData] = useState({
     title:"",
@@ -39,14 +40,16 @@ const LoanMainScreen = ({navigation}: any) => {
     {
       id: '1',
       img: "https://i.ibb.co/7YDg6Yb/budget.png",
-      title: '',
-      amount: '',
-      date: '',
+      title: 'Riyadh',
+      amount: '5000',
+      number:'017654544544',
+      date: '02 Mar,24 12.02PM',
+      paid: true
 
     },
-    {id: '2', img: '', title: '', number: '', date: '', amount: ''},
-    {id: '3', img: '', title: '', number: '', date: '', amount: ''},
-    {id: '4', img: '', title: '', number: '', date: '', amount: ''},
+    {id: '2', img: 'https://i.ibb.co/7YDg6Yb/budget.png', title: 'Arif', number: '01794654654', date: '21 Feb,24 11.02PM', amount: '6000', paid: false},
+    {id: '3', img: 'https://i.ibb.co/7YDg6Yb/budget.png', title: 'Saheed', number: '0198451214', date: '08 Apr,24 10.00PM', amount: '500', paid: true},
+    {id: '4', img: 'https://i.ibb.co/7YDg6Yb/budget.png', title: 'Nahid', number: '01874512365', date: '01 June,24 09.05AM', amount: '2500', paid: false},
     
    
   ];
@@ -152,17 +155,17 @@ const LoanMainScreen = ({navigation}: any) => {
                     />
                   </Box>
                   <Box>
-                    <Text fontWeight='$bold' fontSize={20} color='black'>$10500</Text>
-                    <Text>Family</Text>
-                    <Text fontSize={12}>23 Mar, 23- 12.00 PM</Text>
+                    <Text fontWeight='$bold' fontSize={20} color='black'>{data.amount}</Text>
+                    <Text>{data.title}</Text>
+                    <Text fontSize={12}>{data.date}</Text>
                   </Box>
                 </Box>
 
                 {/* ------------price content box----------------- */}
                 <TouchableOpacity
                   //   disabled={isPaid}
-                  onPress={() => setIsPaid(!isPaid)}>
-                  {isPaid ? (
+                  >
+                  {data.paid === true ? (
                     <Box
                       py="$1"
                       px="$2"
