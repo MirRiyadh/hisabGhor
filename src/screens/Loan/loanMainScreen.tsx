@@ -49,7 +49,7 @@ const LoanMainScreen = ({navigation}: any) => {
     },
     {id: '2', img: 'https://i.ibb.co/7YDg6Yb/budget.png', title: 'Arif', number: '01794654654', date: '21 Feb,24 11.02PM', amount: '6000', paid: false},
     {id: '3', img: 'https://i.ibb.co/7YDg6Yb/budget.png', title: 'Saheed', number: '0198451214', date: '08 Apr,24 10.00PM', amount: '500', paid: true},
-    {id: '4', img: 'https://i.ibb.co/7YDg6Yb/budget.png', title: 'Nahid', number: '01874512365', date: '01 June,24 09.05AM', amount: '2500', paid: false}
+    
     
    
   ];
