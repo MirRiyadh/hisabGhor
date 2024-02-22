@@ -3,6 +3,7 @@ import 'react-native-reanimated';
 import React, {createContext, useState} from 'react';
 
 import MyDrawer from '../routes/Routes';
+
 export const ContextProvider = createContext({});
 
 export interface IStore {
