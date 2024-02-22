@@ -25,20 +25,38 @@ const LoanMainScreen = ({navigation}: any) => {
   const [searchText, setSearchText] = useState('');
   const [modal, setModal] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
+  
+
+  const [loanData, setLoanData] = useState({
+    title:"",
+    amount: 0,
+    reason: "",
+    date: new Date()
+  });
+
+  console.log(loanData);
 
   const datas = [
     {
       id: '1',
-      img: '',
-      title: '',
-      number: '',
-      date: '',
-      amount: '',
+      img: "https://i.ibb.co/7YDg6Yb/budget.png",
+      title: 'Riyadh',
+      amount: '5000',
+      number:'017654544544',
+      date: '02 Mar,24 12.02PM',
+      paid: true
+
     },
-    {id: '2', img: '', title: '', number: '', date: '', amount: ''}
+    {id: '2', img: 'https://i.ibb.co/7YDg6Yb/budget.png', title: 'Arif', number: '01794654654', date: '21 Feb,24 11.02PM', amount: '6000', paid: false},
+    {id: '3', img: 'https://i.ibb.co/7YDg6Yb/budget.png', title: 'Arif', number: '01794654654', date: '21 Feb,24 11.02PM', amount: '55000', paid: false},
+    {id: '4', img: 'https://i.ibb.co/7YDg6Yb/budget.png', title: 'Arif', number: '01794654654', date: '21 Feb,24 11.02PM', amount: '55000', paid: false},
+    
     
    
   ];
+
+  
+  
   return (
     <GlueStackProvider>
       <Box height={"100%"} justifyContent='space-between'>
@@ -133,22 +151,22 @@ const LoanMainScreen = ({navigation}: any) => {
                       w={35}
                       h={35}
                       m={'auto'}
-                      source={savingIcon}
+                      source={data.img}
                       alt="lol"
                     />
                   </Box>
                   <Box>
-                    <Text fontWeight='$bold' fontSize={20} color='black'>$10500</Text>
-                    <Text>Family</Text>
-                    <Text fontSize={12}>23 Mar, 23- 12.00 PM</Text>
+                    <Text fontWeight='$bold' fontSize={20} color='black'>{data.amount}</Text>
+                    <Text>{data.title}</Text>
+                    <Text fontSize={12}>{data.date}</Text>
                   </Box>
                 </Box>
 
                 {/* ------------price content box----------------- */}
                 <TouchableOpacity
                   //   disabled={isPaid}
-                  onPress={() => setIsPaid(!isPaid)}>
-                  {isPaid ? (
+                  >
+                  {data.paid === true ? (
                     <Box
                       py="$1"
                       px="$2"
@@ -219,13 +237,13 @@ const LoanMainScreen = ({navigation}: any) => {
             <Box>
             <VStack px="$1" gap="$4" mt="$3">
               <Input rounded="$lg" >
-                <InputField placeholder="Title" />
+                <InputField placeholder="Title" onChangeText={(text)=>setLoanData({...loanData, title:text})}/>
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Amount" />
+                <InputField placeholder="Amount" onChangeText={(text)=>setLoanData({...loanData, amount:Number(text)})}/>
               </Input>
               <Input rounded="$lg">
-                <InputField placeholder="Reason" />
+                <InputField placeholder="Reason" onChangeText={(text)=>setLoanData({...loanData, reason:text})}/>
               </Input>
               
               <Input rounded="$lg" w="25%" >
