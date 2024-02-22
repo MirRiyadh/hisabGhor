@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import Realm from 'realm';
 import {createRealmContext} from '@realm/react';
 import {Balance, Installments, Loaner, Printer, Totals} from './modals/modals';
-import SplashScreen from 'react-native-splash-screen';
 import ContextApi from '../../src/context/ContextApi';
 
 // Loaner Modal
@@ -18,10 +17,6 @@ export const {RealmProvider, useObject, useQuery, useRealm} =
 
 // Expose a realm
 function AppWrapper() {
-  useEffect(() => {
-    SplashScreen.hide();
-  });
-
   return (
     <RealmProvider>
       <ContextApi />
