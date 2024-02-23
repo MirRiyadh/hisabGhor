@@ -47,7 +47,6 @@ const AddDueAccountsScreen = ({navigation}: any) => {
     address: '',
     amount: 0,
     reason: '',
-    date: new Date(),
   });
 
   console.log('Due Data', dueData);
@@ -240,9 +239,9 @@ const AddDueAccountsScreen = ({navigation}: any) => {
                     />
                   </Input>
 
-                  <Input rounded="$lg" w="25%">
+                  {/* <Input rounded="$lg" w="25%">
                     <InputField fontSize={16} placeholder="📅 Date" />
-                  </Input>
+                  </Input> */}
                 </VStack>
               </Box>
             </ScrollView>
