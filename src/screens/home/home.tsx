@@ -46,10 +46,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native';
 import {Divider} from '@gluestack-ui/themed';
-import {DB} from '../../../database/db/db.config';
 
 // Icons
 const menuIcon = require('../../../assets/icons/white-dots.png');
@@ -827,7 +825,7 @@ export default function Home({navigation}: any) {
           borderTopLeftRadius="$3xl"
           borderTopRightRadius="$3xl"
           // bg="$coolGray900"
-        >
+         >
           <Box mx={'5%'}>
             <Box mx="4%">
               <Divider bgColor="$coolGray300" mt="$5" mb="$1" />
