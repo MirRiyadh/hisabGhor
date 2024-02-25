@@ -35,24 +35,22 @@ import CustomModal from '../../custom/customModal/CustomModal';
 import {Text} from '@gluestack-ui/themed';
 import CommonDateFilter from '../../custom/dateFilter/commonDateFilter';
 import {globalStyle} from '../../styles/GlobalStyle';
-import {RegisteredUser} from '../../../database/controllers/user.controllers';
-import { Image } from '@gluestack-ui/themed';
+import {Image} from '@gluestack-ui/themed';
 
 const AddDueAccountsScreen = ({navigation}: any) => {
   const [searchText, setSearchText] = useState();
   const [modal, setModal] = useState(false);
 
   const [dueData, setDueData] = useState({
-    fullName:"",
-    phone:0,
-    address: "",
+    fullName: '',
+    phone: 0,
+    address: '',
     amount: 0,
-    reason: "",
-    date: new Date()
+    reason: '',
+    date: new Date(),
   });
 
-  console.log("Due Data",dueData);
-  
+  console.log('Due Data', dueData);
 
   return (
     <GlueStackProvider>
@@ -193,74 +191,89 @@ const AddDueAccountsScreen = ({navigation}: any) => {
           appearance={true}
           backButton={true}
           // backButtonTitle="Modal Open hoise"
-         >
+        >
           <>
-          <Box my="$2" justifyContent="center" alignItems="center">
-              <Image  
-              w={60}
-              h={60}
-              m={'auto'}
-              source={addUser}
-              alt="savings"/>
+            <Box my="$2" justifyContent="center" alignItems="center">
+              <Image w={60} h={60} m={'auto'} source={addUser} alt="savings" />
             </Box>
-          <ScrollView>
-            <Box>
-            <VStack px="$1" gap="$4" mt="$3">
-              <Input rounded="$lg" >
-                <InputField placeholder="Full Name" onChangeText={(text)=>setDueData({...dueData, fullName:text})}/>
-              </Input>
-              <Input rounded="$lg">
-                <InputField placeholder="Phone Number" onChangeText={(text)=>setDueData({...dueData, phone:Number(text)})} />
-              </Input>
-              <Input rounded="$lg">
-                <InputField placeholder="Address" onChangeText={(text)=>setDueData({...dueData, address:text})}/>
-              </Input>
-              <Input rounded="$lg">
-                <InputField placeholder="Amount" onChangeText={(text)=>setDueData({...dueData, amount:Number(text)})}/>
-              </Input>
-              <Input rounded="$lg">
-                <InputField placeholder="Reason" onChangeText={(text)=>setDueData({...dueData, reason:text})}/>
-              </Input>
-              
-              <Input rounded="$lg" w="25%" >
-                <InputField fontSize={16} placeholder="📅 Date" />
-              </Input>
-              
-            </VStack>
-          </Box>
-          </ScrollView>
-          <HStack
-                gap="$5"
-                justifyContent="space-around"
-                alignItems="center"
-                mt="$5"
-                pb="$2">
-                <Button
-                  backgroundColor='#4849BF'
-                  action="positive"
-                  w="45%"
-                  onPress={() =>
-                    RegisteredUser({
-                      email: 'arifbiswas@gamil.com',
-                      name: 'arifbiswas',
-                      password: 'lmama',
-                    })
-                  }>
-                  <ButtonIcon as={AddIcon} size="xl"  />
-                  <ButtonText px="$2" fontSize={18} fontWeight='400'>ADD</ButtonText>
-                </Button>
-                <Button
-                backgroundColor='#6f6fd9'
-                  w="45%"
-                  action="negative"
-                  onPress={() => setModal(false)}>
-                  <ButtonIcon as={CloseIcon} size="xl" />
-                  <ButtonText px="$2" fontSize={18} fontWeight='400'>Cancel</ButtonText>
-                </Button>
-          </HStack>
+            <ScrollView>
+              <Box>
+                <VStack px="$1" gap="$4" mt="$3">
+                  <Input rounded="$lg">
+                    <InputField
+                      placeholder="Full Name"
+                      onChangeText={text =>
+                        setDueData({...dueData, fullName: text})
+                      }
+                    />
+                  </Input>
+                  <Input rounded="$lg">
+                    <InputField
+                      placeholder="Phone Number"
+                      onChangeText={text =>
+                        setDueData({...dueData, phone: Number(text)})
+                      }
+                    />
+                  </Input>
+                  <Input rounded="$lg">
+                    <InputField
+                      placeholder="Address"
+                      onChangeText={text =>
+                        setDueData({...dueData, address: text})
+                      }
+                    />
+                  </Input>
+                  <Input rounded="$lg">
+                    <InputField
+                      placeholder="Amount"
+                      onChangeText={text =>
+                        setDueData({...dueData, amount: Number(text)})
+                      }
+                    />
+                  </Input>
+                  <Input rounded="$lg">
+                    <InputField
+                      placeholder="Reason"
+                      onChangeText={text =>
+                        setDueData({...dueData, reason: text})
+                      }
+                    />
+                  </Input>
+
+                  <Input rounded="$lg" w="25%">
+                    <InputField fontSize={16} placeholder="📅 Date" />
+                  </Input>
+                </VStack>
+              </Box>
+            </ScrollView>
+            <HStack
+              gap="$5"
+              justifyContent="space-around"
+              alignItems="center"
+              mt="$5"
+              pb="$2">
+              <Button
+                backgroundColor="#4849BF"
+                action="positive"
+                w="45%"
+                onPress={() => {}}>
+                <ButtonIcon as={AddIcon} size="xl" />
+                <ButtonText px="$2" fontSize={18} fontWeight="400">
+                  ADD
+                </ButtonText>
+              </Button>
+              <Button
+                backgroundColor="#6f6fd9"
+                w="45%"
+                action="negative"
+                onPress={() => setModal(false)}>
+                <ButtonIcon as={CloseIcon} size="xl" />
+                <ButtonText px="$2" fontSize={18} fontWeight="400">
+                  Cancel
+                </ButtonText>
+              </Button>
+            </HStack>
           </>
-          
-          
         </CustomModal>
       </Box>
     </GlueStackProvider>
