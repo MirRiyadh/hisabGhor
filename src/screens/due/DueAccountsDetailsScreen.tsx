@@ -95,7 +95,8 @@ const DueAccountsDetailsScreen = () => {
                   <Text fontSize="$sm">20 Dec, 23 | 10.10 PM</Text>
                 </VStack>
                 {/* due  */}
-                <TouchableOpacity
+                
+                {/* <TouchableOpacity
                   //   disabled={isPaid}
                   onPress={() => setIsPaid(!isPaid)}>
                   {isPaid ? (
@@ -131,7 +132,7 @@ const DueAccountsDetailsScreen = () => {
                       </Text>
                     </Box>
                   )}
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
                 {/* Paid  */}
                 <TouchableOpacity>
