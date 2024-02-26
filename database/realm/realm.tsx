@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react';
 import Realm from 'realm';
 import {createRealmContext} from '@realm/react';
-import {Balance, Loaner, Totals} from './modals/modals';
+import {Due} from './modals/modals';
 import ContextApi from '../../src/context/ContextApi';
 
 // Loaner Modal
 
 // Create a configuration object
 const realmConfig: Realm.Configuration = {
-  schema: [Loaner, Balance, Totals],
+  schema: [Due],
 };
 
 // Create a realm context
