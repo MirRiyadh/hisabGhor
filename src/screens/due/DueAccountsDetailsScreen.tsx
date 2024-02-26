@@ -96,43 +96,8 @@ const DueAccountsDetailsScreen = () => {
                 </VStack>
                 {/* due  */}
                 
-                {/* <TouchableOpacity
-                  //   disabled={isPaid}
-                  onPress={() => setIsPaid(!isPaid)}>
-                  {isPaid ? (
-                    <Box
-                      py="$1"
-                      px="$2"
-                      bg="$success400"
-                      rounded="$md"
-                      alignItems="center"
-                      justifyContent="center"
-                      h="$8"
-                      style={{
-                        width: 60,
-                      }}>
-                      <Text fontSize="$xs" color="$white" fontWeight="$bold">
-                        Paid
-                      </Text>
-                    </Box>
-                  ) : (
-                    <Box
-                      py="$1"
-                      px="$2"
-                      bg="$error400"
-                      rounded="$md"
-                      alignItems="center"
-                      justifyContent="center"
-                      h="$8"
-                      style={{
-                        width: 60,
-                      }}>
-                      <Text fontSize="$xs" color="$white" fontWeight="$bold">
-                        Unpaid
-                      </Text>
-                    </Box>
-                  )}
-                </TouchableOpacity> */}
+                
+                   
 
                 {/* Paid  */}
                 <TouchableOpacity>
