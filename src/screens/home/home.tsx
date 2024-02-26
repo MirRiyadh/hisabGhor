@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, LogBox} from 'react';
 import GlueStackProvider from '../../gluestack_config/gluestackProvider';
 import {
   Box,
@@ -61,6 +61,7 @@ const incomeIcon = require('../../../assets/icons/save-money1.png');
 
 export default function Home({navigation}: any) {
   // const navigation = useNavigation();
+
   // DB.close();
   const XStore: any = useContext(ContextProvider);
 
