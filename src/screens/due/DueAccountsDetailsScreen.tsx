@@ -50,8 +50,6 @@ const DueAccountsDetailsScreen = () => {
     date: new Date(),
   });
 
-  console.log('Due Details Data', dueDetailsData);
-
   return (
     <GlueStackProvider>
       <Box h={'100%'}>
@@ -96,7 +94,7 @@ const DueAccountsDetailsScreen = () => {
                 </VStack>
                 {/* due  */}
                 
-                
+                 
                    
 
                 {/* Paid  */}
