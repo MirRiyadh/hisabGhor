@@ -1,4 +1,4 @@
-import React, {useContext, LogBox} from 'react';
+import React, {useContext} from 'react';
 import GlueStackProvider from '../../gluestack_config/gluestackProvider';
 import {
   Box,
@@ -145,14 +145,36 @@ export default function Home({navigation}: any) {
             </Box>
             {/*-------------- info ------------ */}
             <Box>
+
+              <HStack space="md" justifyContent="space-between" alignItems="center">
               <View mt={15} gap={10}>
-                <Text fontSize={15} color="$white" fontWeight="$semibold">
+                <Text fontSize={15} color="$white" fontWeight="$semibold" alignSelf='flex-start'>
                   Current Balance
                 </Text>
-                <Heading color="$white" fontSize={40} size="2xl">
-                  $ 10000
+                <Heading color="$white" fontSize={32} size="2xl">
+                  $ 100000
                 </Heading>
               </View>
+              <Divider
+              alignContent='flex-end'
+                orientation="vertical"
+                 mx="$2.5"
+                 bg="white"
+                 h={45}
+                />
+              <View mt={15} gap={10}>
+                <Text fontSize={15} color="$white" fontWeight="$semibold">
+                  Spent This Month
+                </Text>
+                <Heading color="$white" fontSize={32} size="2xl">
+                  $ 100000
+                </Heading>
+              </View>
+
+              </HStack>
+              
+
+
               <Divider mt={10} my="$0.5" />
               <HStack justifyContent="space-between" py="$2">
                 <View alignItems="center" w={'30%'}>
