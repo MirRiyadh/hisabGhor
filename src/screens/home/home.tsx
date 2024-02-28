@@ -145,35 +145,30 @@ export default function Home({navigation}: any) {
             </Box>
             {/*-------------- info ------------ */}
             <Box>
-
-              <HStack space="md" justifyContent="space-between" alignItems="center">
-              <View mt={15} gap={10}>
-                <Text fontSize={15} color="$white" fontWeight="$semibold" alignSelf='flex-start'>
-                  Current Balance
-                </Text>
-                <Heading color="$white" fontSize={32} size="2xl">
-                  $ 100000
-                </Heading>
-              </View>
-              <Divider
-              alignContent='flex-end'
-                orientation="vertical"
-                 mx="$2.5"
-                 bg="white"
-                 h={45}
-                />
-              <View mt={15} gap={10}>
-                <Text fontSize={15} color="$white" fontWeight="$semibold">
-                  Spent This Month
-                </Text>
-                <Heading color="$white" fontSize={32} size="2xl">
-                  $ 100000
-                </Heading>
-              </View>
-
+              <HStack
+                space="md"
+                justifyContent="space-between"
+                alignItems="center">
+                <View mt={15} gap={10}>
+                  <Text fontSize={15} color="$white" fontWeight="$semibold">
+                    Current Balance
+                  </Text>
+                  <Heading color="$white" fontSize={32} size="2xl">
+                    $ 100000
+                  </Heading>
+                </View>
+                <Box h="100%" alignItems="flex-end" flexDirection="row">
+                  <Divider orientation="vertical" mx="$2.5" bg="white" h={30} />
+                </Box>
+                <View mt={15} gap={10}>
+                  <Text fontSize={15} color="$white" fontWeight="$semibold">
+                    Spent This Month
+                  </Text>
+                  <Heading color="$white" fontSize={32} size="2xl">
+                    $ 100000
+                  </Heading>
+                </View>
               </HStack>
-              
-
 
               <Divider mt={10} my="$0.5" />
               <HStack justifyContent="space-between" py="$2">
@@ -848,7 +843,7 @@ export default function Home({navigation}: any) {
           borderTopLeftRadius="$3xl"
           borderTopRightRadius="$3xl"
           // bg="$coolGray900"
-         >
+        >
           <Box mx={'5%'}>
             <Box mx="4%">
               <Divider bgColor="$coolGray300" mt="$5" mb="$1" />
