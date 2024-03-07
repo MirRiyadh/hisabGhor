@@ -3,7 +3,7 @@ import Realm, {ObjectSchema} from 'realm';
 //----------------- Due Database Start--------------------
 
 export class Due extends Realm.Object<Due> {
-  _id!: Realm.BSON.ObjectId | string;
+  _id!: Realm.BSON.ObjectId;
 
   static schema: ObjectSchema = {
     name: 'Due',
