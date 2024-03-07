@@ -1,5 +1,5 @@
 import {TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import GlueStackProvider from '../../gluestack_config/gluestackProvider';
 import CommonHeaderPlusBack from '../../custom/commonHeader/CommonHeaderPlusBack';
 import CommonWriteBox from '../../custom/commonWriteBox/CommonWriteBox';
@@ -38,15 +38,17 @@ import {globalStyle} from '../../styles/GlobalStyle';
 import {Image} from '@gluestack-ui/themed';
 import {IDue} from '../../../database/interface/interface';
 import {useQuery, useRealm} from '../../../database/realm/realm';
+import {addNewSerial} from '../../../database/realm/serial';
 
 const AddDueAccountsScreen = ({navigation}: any) => {
   const dueAllData = useQuery<IDue>('Due');
   const realm = useRealm();
   const [searchText, setSearchText] = useState();
   const [modal, setModal] = useState(false);
+  const [modal2, setModal2] = useState(false);
+  const [selectItem, setSelectItem] = useState(null);
 
   const [dueData, setDueData] = useState({
-    serial: 0,
     address: '',
     dueAmount: 0,
     paidAmount: 0,
@@ -54,9 +56,10 @@ const AddDueAccountsScreen = ({navigation}: any) => {
     phone: '',
   });
 
-  console.log(dueAllData);
+  // console.log(addNewSerial(dueAllData));
 
   const handleSaveDueData = React.useCallback(async () => {
+    dueData.serial = addNewSerial(dueAllData);
     console.log(dueData);
     realm.write(() => {
       realm.create('Due', {
@@ -65,7 +68,46 @@ const AddDueAccountsScreen = ({navigation}: any) => {
     });
   }, [dueData]);
 
+  const handleUpdateDueData = React.useCallback(async () => {
+    dueData._id = selectItem._id;
+    dueData.serial = selectItem.serial;
+
+    if (!dueData.address) {
+      dueData.address = selectItem.address;
+    }
+    if (!dueData.dueAmount) {
+      dueData.dueAmount = selectItem.dueAmount;
+    }
+    if (!dueData.fullName) {
+      dueData.fullName = selectItem.fullName;
+    }
+    if (!dueData.phone) {
+      dueData.phone = selectItem.phone;
+    }
+
+    const findItem = realm.objectForPrimaryKey('Due', selectItem._id);
+    realm.write(() => {
+      findItem.address = dueData.address;
+      findItem.dueAmount = dueData.dueAmount;
+      findItem.fullName = dueData.fullName;
+      findItem.phone = dueData.phone;
+    });
+    setSelectItem(null);
+  }, [dueData]);
+
   // console.log('Due Data', dueData);
+
+  useEffect(() => {
+    if (selectItem) {
+      setDueData({
+        address: selectItem?.address,
+        dueAmount: selectItem?.dueAmount,
+        paidAmount: selectItem?.paidAmount,
+        fullName: selectItem?.fullName,
+        phone: selectItem?.phone,
+      });
+    }
+  }, [selectItem]);
 
   return (
     <GlueStackProvider>
@@ -169,32 +211,45 @@ const AddDueAccountsScreen = ({navigation}: any) => {
                           {/* <Icon as={GlobeIcon} size="sm" mr="$2" /> */}
                           <MenuItemLabel size="md">Call Now</MenuItemLabel>
                         </MenuItem>
-                        <MenuItem key="Send SMS" textValue="Send SMS">
-                          {/* PuzzleIcon is imported from 'lucide-react-native' */}
-                          {/* <Icon as={PuzzleIcon} size="sm" mr="$2" /> */}
-                          <MenuItemLabel size="md">Send SMS</MenuItemLabel>
-                        </MenuItem>
+                        {/* <MenuItem key="Send SMS" textValue="Send SMS"> */}
+                        {/* PuzzleIcon is imported from 'lucide-react-native' */}
+                        {/* <Icon as={PuzzleIcon} size="sm" mr="$2" /> */}
+                        {/* <MenuItemLabel size="md">Send SMS</MenuItemLabel> */}
+                        {/* </MenuItem> */}
 
-                        <MenuItem key="Edit" textValue="Edit">
+                        <MenuItem
+                          onPress={() => {
+                            setSelectItem(item);
+                            setModal2(!modal2);
+                          }}
+                          key="Edit"
+                          textValue="Edit">
                           {/* <Icon as={SettingsIcon} size="sm" mr="$2" /> */}
                           <MenuItemLabel size="md">Edit</MenuItemLabel>
                         </MenuItem>
-                        <MenuItem key="Delete" textValue="Delete">
+                        <MenuItem
+                          onPress={() => {
+                            realm.write(() => {
+                              realm.delete(item);
+                            });
+                          }}
+                          key="Delete"
+                          textValue="Delete">
                           {/* <Icon as={AddIcon} size="sm" mr="$2" /> */}
                           <MenuItemLabel size="md">Delete</MenuItemLabel>
                         </MenuItem>
-                        <MenuItem key="Details" textValue="Details">
-                          {/* <Icon as={AddIcon} size="sm" mr="$2" /> */}
-                          <MenuItemLabel size="md">Details</MenuItemLabel>
-                        </MenuItem>
-                        <MenuItem
+                        {/* <MenuItem key="Details" textValue="Details"> */}
+                        {/* <Icon as={AddIcon} size="sm" mr="$2" /> */}
+                        {/* <MenuItemLabel size="md">Details</MenuItemLabel> */}
+                        {/* </MenuItem> */}
+                        {/* <MenuItem
                           key="Set A Reminder"
-                          textValue="Set A Reminder">
-                          {/* <Icon as={AddIcon} size="sm" mr="$2" /> */}
-                          <MenuItemLabel size="md">
+                          textValue="Set A Reminder"> */}
+                        {/* <Icon as={AddIcon} size="sm" mr="$2" /> */}
+                        {/* <MenuItemLabel size="md">
                             Set A Reminder
-                          </MenuItemLabel>
-                        </MenuItem>
+                          </MenuItemLabel> */}
+                        {/* </MenuItem> */}
                       </Menu>
                     </Box>
                   </HStack>
@@ -304,6 +359,107 @@ const AddDueAccountsScreen = ({navigation}: any) => {
             </HStack>
           </>
         </CustomModal>
+        {/* update due modal  */}
+        {selectItem && (
+          <CustomModal
+            modalVisible={modal2}
+            setModalVisible={setModal2}
+            Radius={20}
+            height={400}
+            width="90%"
+            appearance={true}
+            backButton={true}
+            // backButtonTitle="Modal Open hoise"
+          >
+            <>
+              <Box my="$2" justifyContent="center" alignItems="center">
+                <Image
+                  w={60}
+                  h={60}
+                  m={'auto'}
+                  source={addUser}
+                  alt="savings"
+                />
+              </Box>
+              <ScrollView>
+                <Box>
+                  <VStack px="$1" gap="$4" mt="$3">
+                    <Input rounded="$lg">
+                      <InputField
+                        placeholder="Full Name"
+                        value={dueData?.fullName}
+                        onChangeText={text =>
+                          setDueData({...dueData, fullName: text})
+                        }
+                      />
+                    </Input>
+                    <Input rounded="$lg">
+                      <InputField
+                        placeholder="Phone Number"
+                        value={`${dueData?.phone}`}
+                        onChangeText={text =>
+                          setDueData({...dueData, phone: Number(text)})
+                        }
+                      />
+                    </Input>
+                    <Input rounded="$lg">
+                      <InputField
+                        placeholder="Address"
+                        value={dueData?.address}
+                        onChangeText={text =>
+                          setDueData({...dueData, address: text})
+                        }
+                      />
+                    </Input>
+                    <Input rounded="$lg">
+                      <InputField
+                        placeholder="Amount"
+                        value={`${dueData?.dueAmount}`}
+                        onChangeText={text =>
+                          setDueData({...dueData, dueAmount: Number(text)})
+                        }
+                      />
+                    </Input>
+
+                    {/* <Input rounded="$lg" w="25%">
+                    <InputField fontSize={16} placeholder="📅 Date" />
+                  </Input> */}
+                  </VStack>
+                </Box>
+              </ScrollView>
+              <HStack
+                gap="$5"
+                justifyContent="space-around"
+                alignItems="center"
+                mt="$5"
+                pb="$2">
+                <Button
+                  backgroundColor="#4849BF"
+                  action="positive"
+                  w="45%"
+                  onPress={() => {
+                    handleUpdateDueData();
+                    setModal2(!modal2);
+                  }}>
+                  <ButtonIcon as={AddIcon} size="xl" />
+                  <ButtonText px="$2" fontSize={18} fontWeight="400">
+                    ADD
+                  </ButtonText>
+                </Button>
+                <Button
+                  backgroundColor="#6f6fd9"
+                  w="45%"
+                  action="negative"
+                  onPress={() => setModal2(false)}>
+                  <ButtonIcon as={CloseIcon} size="xl" />
+                  <ButtonText px="$2" fontSize={18} fontWeight="400">
+                    Cancel
+                  </ButtonText>
+                </Button>
+              </HStack>
+            </>
+          </CustomModal>
+        )}
       </Box>
     </GlueStackProvider>
   );
