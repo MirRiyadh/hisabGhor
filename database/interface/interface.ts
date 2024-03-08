@@ -8,6 +8,12 @@ export interface IDue {
   paidAmount: number;
   fullName: string;
   phone: string;
-  createdAt: Date;
-  updatedAt: Date;
+  date: Date;
+}
+export interface IDuePaid {
+  _id: Realm.BSON.ObjectId;
+  serial: number;
+  paidAmount: number;
+  reason: string;
+  date: Date;
 }

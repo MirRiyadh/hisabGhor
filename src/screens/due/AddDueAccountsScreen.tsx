@@ -49,6 +49,7 @@ const AddDueAccountsScreen = ({navigation}: any) => {
   const [selectItem, setSelectItem] = useState(null);
 
   const [dueData, setDueData] = useState({
+    serial: 1,
     address: '',
     dueAmount: 0,
     paidAmount: 0,
@@ -59,7 +60,9 @@ const AddDueAccountsScreen = ({navigation}: any) => {
   // console.log(addNewSerial(dueAllData));
 
   const handleSaveDueData = React.useCallback(async () => {
-    dueData.serial = addNewSerial(dueAllData);
+    if (dueAllData.length !== 0) {
+      dueData.serial = addNewSerial(dueAllData);
+    }
     console.log(dueData);
     realm.write(() => {
       realm.create('Due', {
@@ -146,7 +149,9 @@ const AddDueAccountsScreen = ({navigation}: any) => {
                     </Avatar>
                     {/* cost info  */}
                     <VStack gap="-$0.5">
-                      <Text fontSize="$sm">{item?.fullName}</Text>
+                      <Text fontSize="$sm">
+                        {item.serial}. {item?.fullName}
+                      </Text>
                       <Text fontSize="$sm">{item?.phone}</Text>
                       <Text fontSize="$sm">{item?.address}</Text>
                     </VStack>
@@ -257,15 +262,17 @@ const AddDueAccountsScreen = ({navigation}: any) => {
               </VStack>
             ))
           ) : (
-            <Box>
-              <Text>No found any due</Text>
+            <Box justifyContent="center" alignItems="center">
+              <Text color="$coolGray400" fontWeight="$bold" size="md">
+                No found any due
+              </Text>
             </Box>
           )}
         </ScrollView>
         <CommonWriteBox
           icon={<FontAwesome name="fax" color="white" size={30} />}
           title="Total Deu"
-          amount="500"
+          amount={`${dueAllData.reduce((a, b) => b.dueAmount + a, 0)}`}
           btTitle="Add People"
           modal={modal}
           setModal={setModal}
