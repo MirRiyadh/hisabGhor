@@ -18,11 +18,29 @@ export class Due extends Realm.Object<Due> {
       paidAmount: {type: 'int', default: 0},
       fullName: {type: 'string'},
       phone: {type: 'int'},
-      createdAt: {
+      date: {
         type: 'date',
         default: () => new Date(),
       },
-      updatedAt: {
+    },
+    primaryKey: '_id',
+  };
+}
+export class DuePaid extends Realm.Object<DuePaid> {
+  _id!: Realm.BSON.ObjectId;
+
+  static schema: ObjectSchema = {
+    name: 'DuePaid',
+    properties: {
+      _id: {
+        type: 'objectId',
+        default: () => new Realm.BSON.ObjectId(),
+      },
+      refer_id: 'objectId',
+      serial: {type: 'int'},
+      paidAmount: {type: 'int', default: 0},
+      reason: {type: 'string'},
+      date: {
         type: 'date',
         default: () => new Date(),
       },

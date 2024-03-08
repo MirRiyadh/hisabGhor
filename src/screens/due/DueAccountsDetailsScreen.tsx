@@ -1,4 +1,4 @@
-import {TouchableOpacity} from 'react-native';
+import {Alert, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import GlueStackProvider from '../../gluestack_config/gluestackProvider';
 import CommonHeaderPlusBack from '../../custom/commonHeader/CommonHeaderPlusBack';
@@ -37,139 +37,173 @@ import {globalStyle} from '../../styles/GlobalStyle';
 
 import {Image} from '@gluestack-ui/themed';
 import {Input} from '@gluestack-ui/themed';
+import {useObject, useQuery, useRealm} from '../../../database/realm/realm';
+import {IDue, IDuePaid} from '../../../database/interface/interface';
+import {addNewSerial} from '../../../database/realm/serial';
+import {Due} from '../../../database/realm/modals/modals';
 
-const DueAccountsDetailsScreen = () => {
-  const [searchText, setSearchText] = useState();
+const DueAccountsDetailsScreen = ({route}: any) => {
+  const Item: IDue = route?.params?.item;
+
+  const duePaidAllData = useQuery<IDuePaid>('DuePaid');
+  const realm = useRealm();
+  // const [searchText, setSearchText] = useState();
   const [modal, setModal] = useState(false);
-  const [isPaid, setIsPaid] = useState(false);
+  // const [isPaid, setIsPaid] = useState(false);
 
   const [dueDetailsData, setDueDetailsData] = useState({
-    amount: 0,
+    refer_id: Item._id,
+    serial: 1,
     paidAmount: 0,
     reason: '',
     date: new Date(),
   });
+
+  // console.log(duePaidAllData);
+
+  const handleSaveDueData = React.useCallback(async () => {
+    if (Item.dueAmount < dueDetailsData.paidAmount) {
+      return Alert.alert("This amount not exist in 'due'");
+    }
+    if (duePaidAllData.length !== 0) {
+      dueDetailsData.serial = addNewSerial(duePaidAllData);
+    }
+
+    const findItem = realm.objectForPrimaryKey<Due>('Due', Item._id);
+
+    realm.write(() => {
+      findItem.paidAmount = findItem.paidAmount + dueDetailsData.paidAmount;
+      findItem.dueAmount = findItem.dueAmount - dueDetailsData.paidAmount;
+    });
+
+    realm.write(() => {
+      realm.create('DuePaid', {
+        ...dueDetailsData,
+      });
+    });
+    setModal(!modal);
+  }, [dueDetailsData]);
 
   return (
     <GlueStackProvider>
       <Box h={'100%'}>
         <CommonHeaderPlusBack
           isBack={true}
-          title={'Riyadh Bhai'}
-          isSearch={true}
-          setSearchText={setSearchText}
-          searchText={searchText}
+          title={`${Item.fullName}`}
+          // isSearch={true}
+          // setSearchText={setSearchText}
+          // searchText={searchText}
         />
-        <CommonDateFilter />
+        {/* <CommonDateFilter /> */}
         <Box mx="$4" mb="$1">
           <Divider />
         </Box>
         <ScrollView>
           <VStack>
-            <Box>
-              <HStack
-                justifyContent="space-between"
-                alignItems="center"
-                mx="$2"
-                p="$2"
-                py="$3"
-                position="relative">
-                {/* user / avater  */}
-                <View
-                  bg="$coolGray300"
-                  style={{
-                    width: 55,
-                    height: 55,
-                  }}
-                  borderRadius="$md"
-                  justifyContent="center"
-                  alignItems="center">
-                  <FontAwesome name="dollar" size={30} color="gray" />
-                </View>
-                {/* cost info  */}
-                <VStack gap="-$1">
-                  <Text fontSize="$sm">Reason: Hospital</Text>
-                  <Text fontSize="$sm">$700 </Text>
-                  <Text fontSize="$sm">20 Dec, 23 | 10.10 PM</Text>
-                </VStack>
-                {/* due  */}
-                
-                 
-                   
+            {duePaidAllData.length !== 0 ? (
+              duePaidAllData.map(item => (
+                <Box key={item._id}>
+                  <HStack
+                    justifyContent="space-between"
+                    alignItems="center"
+                    mx="$2"
+                    p="$2"
+                    py="$3"
+                    position="relative">
+                    {/* user / avater  */}
+                    <HStack gap="$3">
+                      <View
+                        bg="$coolGray300"
+                        style={{
+                          width: 55,
+                          height: 55,
+                        }}
+                        borderRadius="$md"
+                        justifyContent="center"
+                        alignItems="center">
+                        <FontAwesome name="dollar" size={30} color="gray" />
+                      </View>
+                      {/* cost info  */}
+                      <VStack gap="-$1">
+                        <Text fontSize="$sm">Reason: {item.reason}</Text>
+                        <Text fontSize="$sm">${item.paidAmount} </Text>
+                        <Text fontSize="$sm">
+                          {new Date(item.date).toLocaleDateString()}
+                        </Text>
+                      </VStack>
+                    </HStack>
+                    {/* due  */}
 
-                {/* Paid  */}
-                <TouchableOpacity>
+                    {/* Paid  */}
+                    {/* <TouchableOpacity>
                   <FontAwesome name="book" size={20} color="gray" />
-                </TouchableOpacity>
-                <Box p="$1" position="relative" right={0} top={2}>
-                  <Menu
-                    placement="bottom"
-                    // right="$4"
-                    top="-$4"
-                    width="$16"
-                    gap="-$1"
-                    trigger={({...triggerProps}) => {
-                      return (
-                        <TouchableOpacity {...triggerProps}>
-                          <Feather
-                            name="more-vertical"
-                            size={20}
-                            color="gray"
-                          />
-                        </TouchableOpacity>
-                      );
-                    }}>
-                    <MenuItem key="Pay Few Money" textValue="Pay Few Money">
-                      {/* <Icon as={GlobeIcon} size="sm" mr="$2" /> */}
-                      <MenuItemLabel size="md">Pay Few Money</MenuItemLabel>
-                    </MenuItem>
-                    <MenuItem
-                      key="Mark As Important"
-                      textValue="Mark As Important">
-                      {/* PuzzleIcon is imported from 'lucide-react-native' */}
-                      {/* <Icon as={PuzzleIcon} size="sm" mr="$2" /> */}
-                      <MenuItemLabel size="md">Mark As Important</MenuItemLabel>
-                    </MenuItem>
-
-                    <MenuItem key="Edit" textValue="Edit">
-                      {/* <Icon as={SettingsIcon} size="sm" mr="$2" /> */}
-                      <MenuItemLabel size="md">Edit</MenuItemLabel>
-                    </MenuItem>
-                    <MenuItem key="Delete" textValue="Delete">
-                      {/* <Icon as={AddIcon} size="sm" mr="$2" /> */}
-                      <MenuItemLabel size="md">Delete</MenuItemLabel>
-                    </MenuItem>
-                    <MenuItem key="Set A Deadline" textValue="Set A Deadline">
-                      {/* <Icon as={AddIcon} size="sm" mr="$2" /> */}
-                      <MenuItemLabel size="md">Set A Deadline</MenuItemLabel>
-                    </MenuItem>
-                  </Menu>
+                </TouchableOpacity> */}
+                    <Box p="$1" position="relative" right={0} top={2}>
+                      <Menu
+                        placement="bottom"
+                        // right="$4"
+                        top="-$4"
+                        width="$16"
+                        gap="-$1"
+                        trigger={({...triggerProps}) => {
+                          return (
+                            <TouchableOpacity {...triggerProps}>
+                              <Feather
+                                name="more-vertical"
+                                size={20}
+                                color="gray"
+                              />
+                            </TouchableOpacity>
+                          );
+                        }}>
+                        <MenuItem
+                          onPress={() => {
+                            realm.write(() => {
+                              realm.delete(item);
+                            });
+                          }}
+                          key="Delete"
+                          textValue="Delete">
+                          {/* <Icon as={AddIcon} size="sm" mr="$2" /> */}
+                          <MenuItemLabel size="md">Delete</MenuItemLabel>
+                        </MenuItem>
+                      </Menu>
+                    </Box>
+                  </HStack>
+                  <View
+                    style={{
+                      borderStyle: 'dashed',
+                      borderColor: 'gray',
+                      borderBottomWidth: 1,
+                      marginHorizontal: '4%',
+                    }}></View>
                 </Box>
-              </HStack>
-              <View
-                style={{
-                  borderStyle: 'dashed',
-                  borderColor: 'gray',
-                  borderBottomWidth: 1,
-                  marginHorizontal: '4%',
-                }}></View>
-            </Box>
+              ))
+            ) : (
+              <Box justifyContent="center" alignItems="center">
+                <Text color="$coolGray400" fontWeight="$bold" size="md">
+                  No found any due
+                </Text>
+              </Box>
+            )}
           </VStack>
         </ScrollView>
-        <CommonWriteBox
-          icon={<FontAwesome name="fax" color="white" size={30} />}
-          title="Total Deu"
-          amount="500"
-          btTitle="Add Due"
-          modal={modal}
-          setModal={setModal}
-        />
+        {Item?.dueAmount !== 0 && (
+          <CommonWriteBox
+            icon={<FontAwesome name="fax" color="white" size={30} />}
+            title="Total Deu"
+            amount={`${Item?.dueAmount}`}
+            btTitle="Add Due"
+            modal={modal}
+            setModal={setModal}
+          />
+        )}
 
         <CustomModal
           modalVisible={modal}
           setModalVisible={setModal}
           Radius={20}
-          height={400}
+          height={280}
           width="90%"
           appearance={true}
           backButton={true}
@@ -196,12 +230,12 @@ const DueAccountsDetailsScreen = () => {
                       onChangeText={text =>
                         setDueDetailsData({
                           ...dueDetailsData,
-                          amount: Number(text),
+                          paidAmount: Number(text),
                         })
                       }
                     />
                   </Input>
-                  <Input rounded="$lg">
+                  {/* <Input rounded="$lg">
                     <InputField
                       placeholder="Paid Amount(Optional)"
                       onChangeText={text =>
@@ -211,11 +245,11 @@ const DueAccountsDetailsScreen = () => {
                         })
                       }
                     />
-                  </Input>
+                  </Input> */}
 
-                  <Input rounded="$lg" w="25%">
+                  {/* <Input rounded="$lg" w="25%">
                     <InputField fontSize={16} placeholder="📅 Date" />
-                  </Input>
+                  </Input> */}
                 </VStack>
               </Box>
             </ScrollView>
@@ -226,6 +260,7 @@ const DueAccountsDetailsScreen = () => {
               mt="$5"
               pb="$2">
               <Button
+                onPressIn={() => handleSaveDueData()}
                 backgroundColor="#4849BF"
                 action="positive"
                 w="45%"
