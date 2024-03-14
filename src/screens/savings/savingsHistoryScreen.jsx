@@ -70,14 +70,6 @@ const SavingsHistoryScreen = () => {
       date: '',
       amount: '',
     },
-    {
-      id: '4',
-      img: '',
-      title: '',
-      number: '',
-      date: '',
-      amount: '',
-    },
     
   ];
 
