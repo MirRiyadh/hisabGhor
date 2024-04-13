@@ -40,7 +40,6 @@ import {Input} from '@gluestack-ui/themed';
 import {useObject, useQuery, useRealm} from '../../../database/realm/realm';
 import {IDue, IDuePaid} from '../../../database/interface/interface';
 import {addNewSerial} from '../../../database/realm/serial';
-import {Due} from '../../../database/realm/modals/modals';
 
 const DueAccountsDetailsScreen = ({route}: any) => {
   const Item: IDue = route?.params?.item;

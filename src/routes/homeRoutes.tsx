@@ -59,7 +59,7 @@ function HomeRoutes() {
       />
 
       <Stack.Screen
-        name="Savings-History"
+        name="savings_history"
         component={SavingsHistoryScreen}
         options={{
           headerShown: false,
@@ -72,7 +72,7 @@ function HomeRoutes() {
           headerShown: false,
         }}
       />
-      
+
       <Stack.Screen
         name="budgets-list"
         component={BudgetSectorList}
